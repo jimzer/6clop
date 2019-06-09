@@ -14,6 +14,7 @@ FileHandle::~FileHandle() {
 }
 
 void FileHandle::writeLine(const std::string &s) { oFile << s << std::endl; }
+void FileHandle::writeLine(const std::stringstream &s) { oFile << s.rdbuf() << std::endl; }
 
 void FileHandle::printOut() {
   std::string str;

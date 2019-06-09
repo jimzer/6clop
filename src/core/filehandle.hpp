@@ -12,14 +12,17 @@ class FileHandle {
   std::ofstream oFile;
   std::ifstream iFile;
 
+  FileHandle(const FileHandle &);
+  FileHandle &operator=(const FileHandle &);
+
  public:
   FileHandle(const std::string &name, const Fmod fm);
   ~FileHandle();
 
   void writeLine(const std::string &s);
+  void writeLine(const std::stringstream &s);
   void printOut();
   std::string readLine();
-
 };
 
 #endif

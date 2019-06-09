@@ -3,6 +3,7 @@ add_executable(
     geometry_test.cpp
     ray_test.cpp
     transform_test.cpp
+    camera_test.cpp
     filehandle_test.cpp
     )
 

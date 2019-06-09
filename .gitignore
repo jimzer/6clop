@@ -1,4 +1,5 @@
 .vscode/
+*vgcore*
 build/
 __pycache__/
 .env/
