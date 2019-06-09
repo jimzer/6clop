@@ -1,5 +1,5 @@
-#include "core/cyclop.hpp"
 #include "core/transform.hpp"
+#include "core/cyclop.hpp"
 #include "gtest/gtest.h"
 
 using namespace transform;
@@ -14,16 +14,16 @@ TEST(transform, scaleTransform) {
   Vector3f v1(1, 2, 3);
   Transform t1 = transform::scaleTransform(v1);
 
-  Vector3f r1 =  t1.apply(v, POINT);
-  Vector3f ri1 =  t1.invApply(r1, POINT);
+  Vector3f r1 = t1.apply(v, POINT);
+  Vector3f ri1 = t1.invApply(r1, POINT);
 
-  Vector3f r2 =  t1.apply(v, VECTOR);
-  Vector3f ri2 =  t1.invApply(r2, VECTOR);
+  Vector3f r2 = t1.apply(v, VECTOR);
+  Vector3f ri2 = t1.invApply(r2, VECTOR);
 
-  ASSERT_EQ(t1.mat(0,0), 1);
-  ASSERT_EQ(t1.mat(1,1), 2);
-  ASSERT_EQ(t1.mat(2,2), 3);
-  ASSERT_EQ(t1.mat(3,3), 1);
+  ASSERT_EQ(t1.mat(0, 0), 1);
+  ASSERT_EQ(t1.mat(1, 1), 2);
+  ASSERT_EQ(t1.mat(2, 2), 3);
+  ASSERT_EQ(t1.mat(3, 3), 1);
 
   ASSERT_EQ(r1(0), 1);
   ASSERT_EQ(r1(1), 0);
@@ -34,7 +34,6 @@ TEST(transform, scaleTransform) {
   ASSERT_EQ(r2(1), 0);
   ASSERT_EQ(r2(2), 6);
   ASSERT_EQ(ri2, v);
-
 }
 
 TEST(transform, translateTransform) {
@@ -42,19 +41,19 @@ TEST(transform, translateTransform) {
   Vector3f v1(1, 2, 3);
   Transform t1 = transform::translateTransform(v1);
 
-  Vector3f r1 =  t1.apply(v, POINT);
-  Vector3f ri1 =  t1.invApply(r1, POINT);
+  Vector3f r1 = t1.apply(v, POINT);
+  Vector3f ri1 = t1.invApply(r1, POINT);
 
-  Vector3f r2 =  t1.apply(v, VECTOR);
-  Vector3f ri2 =  t1.invApply(r2, VECTOR);
+  Vector3f r2 = t1.apply(v, VECTOR);
+  Vector3f ri2 = t1.invApply(r2, VECTOR);
 
-  ASSERT_EQ(t1.mat(0,0), 1);
-  ASSERT_EQ(t1.mat(1,1), 1);
-  ASSERT_EQ(t1.mat(2,2), 1);
-  ASSERT_EQ(t1.mat(3,3), 1);
-  ASSERT_EQ(t1.mat(0,3), 1);
-  ASSERT_EQ(t1.mat(1,3), 2);
-  ASSERT_EQ(t1.mat(2,3), 3);
+  ASSERT_EQ(t1.mat(0, 0), 1);
+  ASSERT_EQ(t1.mat(1, 1), 1);
+  ASSERT_EQ(t1.mat(2, 2), 1);
+  ASSERT_EQ(t1.mat(3, 3), 1);
+  ASSERT_EQ(t1.mat(0, 3), 1);
+  ASSERT_EQ(t1.mat(1, 3), 2);
+  ASSERT_EQ(t1.mat(2, 3), 3);
 
   ASSERT_EQ(r1(0), 2);
   ASSERT_EQ(r1(1), 2);
@@ -72,7 +71,7 @@ TEST(transform, composeTransforms) {
   Vector3f vs2(1, 1, 4);
   Transform ts1 = transform::scaleTransform(vs1);
   Transform tt = transform::translateTransform(vt);
-  Transform ts2= transform::scaleTransform(vs2);
+  Transform ts2 = transform::scaleTransform(vs2);
 
   Transform t1 = transform::composeTransforms(ts1, tt);
   Transform t2 = transform::composeTransforms(ts1, tt, ts2);
@@ -88,5 +87,46 @@ TEST(transform, composeTransforms) {
 
   ASSERT_EQ(r2, Vector3f(6, 10, 24));
   ASSERT_EQ(rr2, v);
+}
 
+TEST(transform, rasterToNdc) {
+  Vector3f v1(0, 0, 1);
+  Vector3f v2(500, 250, 1);
+  Vector3f v3(1000, 500, 1);
+  Transform t = rasterToNdc(1000, 500);
+  Vector3f r1 = t.apply(v1, POINT);
+  Vector3f r2 = t.apply(v2, POINT);
+  Vector3f r3 = t.apply(v3, POINT);
+
+  ASSERT_EQ(r1, Vector3f(0, 0, 1));
+  ASSERT_EQ(r2, Vector3f(0.5, 0.5, 1));
+  ASSERT_EQ(r3, Vector3f(1, 1, 1));
+}
+
+TEST(transform, ndcToCam) {
+  Vector3f v1(0, 0, 1);
+  Vector3f v2(1, 1, 1);
+  Vector3f v3(0.5, 0.5, 1);
+  Transform t = ndcToCam(2, 90);
+  Vector3f r1 = t.apply(v1, POINT);
+  Vector3f r2 = t.apply(v2, POINT);
+  Vector3f r3 = t.apply(v3, POINT);
+
+  ASSERT_EQ(r1, Vector3f(-2, 1, 1));
+  ASSERT_EQ(r2, Vector3f(2, -1, 1));
+  ASSERT_EQ(r3, Vector3f(0, 0, 1));
+}
+
+TEST(camera, rasterToCam) {
+  Vector3f v1(0, 0, 1);
+  Vector3f v2(1000, 500, 1);
+  Vector3f v3(500, 250, 1);
+  Transform t = rasterToCam(1000, 500, 90);
+  Vector3f r1 = t.apply(v1, POINT);
+  Vector3f r2 = t.apply(v2, POINT);
+  Vector3f r3 = t.apply(v3, POINT);
+
+  ASSERT_EQ(r1, Vector3f(-2, 1, 1));
+  ASSERT_EQ(r2, Vector3f(2, -1, 1));
+  ASSERT_EQ(r3, Vector3f(0, 0, 1));
 }

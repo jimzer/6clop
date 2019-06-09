@@ -21,13 +21,17 @@ Transform scaleTransform(const Vector3f &s);
 Transform translateTransform(const Vector3f &s);
 
 template <typename... Args>
-Transform composeTransforms(Args&&... args) {
+Transform composeTransforms(Args &&... args) {
   Matrix4f m = Matrix4f::Identity();
   for (auto &&t : {args...}) {
     m *= t.mat;
   }
   return Transform(m);
 }
+
+Transform rasterToNdc(const Float &resX, const Float &resY);
+Transform ndcToCam(const Float &aspect, const Float &fov);
+Transform rasterToCam(const Float &resX, const Float &resY, const Float &fov);
 
 }  // namespace transform
 
