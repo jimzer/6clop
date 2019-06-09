@@ -1,0 +1,25 @@
+#ifndef FILEHANDLEH
+#define FILEHANDLEH
+
+#include <fstream>
+#include <iostream>
+#include "core/cyclop.hpp"
+
+enum Fmod { READ, WRITE };
+
+class FileHandle {
+ private:
+  std::ofstream oFile;
+  std::ifstream iFile;
+
+ public:
+  FileHandle(const std::string &name, const Fmod fm);
+  ~FileHandle();
+
+  void writeLine(const std::string &s);
+  void printOut();
+  std::string readLine();
+
+};
+
+#endif

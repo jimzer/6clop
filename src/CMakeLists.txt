@@ -12,6 +12,8 @@ add_library(
     core/transform.cpp
     core/camera.hpp
     core/camera.cpp
+    core/filehandle.hpp
+    core/filehandle.cpp
 )
 
 target_include_directories(core PUBLIC "${CMAKE_CURRENT_SOURCE_DIRECTORY/src}")
