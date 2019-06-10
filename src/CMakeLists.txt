@@ -17,5 +17,11 @@ add_library(
     core/image_ppm.hpp
     core/image_ppm.cpp
 )
+add_library(
+    cameras
+    cameras/perspective_camera.hpp
+    cameras/perspective_camera.cpp
+)
 
 target_include_directories(core PUBLIC "${CMAKE_CURRENT_SOURCE_DIRECTORY/src}")
+target_include_directories(cameras PUBLIC "${CMAKE_CURRENT_SOURCE_DIRECTORY/src}")

@@ -28,6 +28,7 @@ target_compile_features(main PRIVATE cxx_std_17)
 
 target_link_libraries (main PUBLIC Eigen3::Eigen)
 target_link_libraries(main PRIVATE core)
+target_link_libraries(main PRIVATE cameras)
 
 
 include(cmake/googletest.cmake)

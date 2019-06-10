@@ -34,8 +34,10 @@ typedef float Float;
 static constexpr Float MaxFloat = std::numeric_limits<Float>::max();
 static constexpr Float Infinity = std::numeric_limits<Float>::infinity();
 
+typedef Eigen::Matrix<Float, 2, 1> Vector2f;
 typedef Eigen::Matrix<Float, 3, 1> Vector3f;
 typedef Eigen::Matrix<Float, 4, 1> Vector4f;
+typedef Eigen::Matrix<int, 2, 1> Vector2i;
 typedef Eigen::Matrix<int, 3, 1> Vector3i;
 
 typedef Eigen::Matrix<Float, 4, 4> Matrix4f;

@@ -11,6 +11,7 @@ class Transform {
   Matrix4f mat;
   Matrix4f invMat;
 
+  Transform();
   Transform(const Matrix4f &m);
 
   Vector3f apply(const Vector3f &v, Geomtype g);

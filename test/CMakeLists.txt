@@ -1,10 +1,10 @@
 add_executable(
     unit_tests
-    geometry_test.cpp
-    ray_test.cpp
-    transform_test.cpp
-    camera_test.cpp
-    filehandle_test.cpp
+    core/geometry_test.cpp
+    core/ray_test.cpp
+    core/transform_test.cpp
+    core/filehandle_test.cpp
+    cameras/perspective_camera_test.cpp
     )
 
 target_link_libraries(
@@ -12,6 +12,7 @@ target_link_libraries(
     gtest_main
     Eigen3::Eigen
     core
+    cameras
     )
 
 add_test(

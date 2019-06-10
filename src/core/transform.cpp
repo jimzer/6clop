@@ -4,6 +4,11 @@
 
 namespace transform {
 
+Transform::Transform() {
+  mat = Matrix4f::Identity();
+  invMat = mat.inverse();
+}
+
 Transform::Transform(const Matrix4f &m) {
   mat = m;
   invMat = mat.inverse();
