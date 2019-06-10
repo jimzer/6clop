@@ -15,6 +15,7 @@ class Transform {
 
   Vector3f apply(const Vector3f &v, Geomtype g);
   Vector3f invApply(const Vector3f &v, Geomtype g);
+  void inverse();
 };
 
 Transform scaleTransform(const Vector3f &s);
@@ -29,9 +30,13 @@ Transform composeTransforms(Args &&... args) {
   return Transform(m);
 }
 
+Transform basisChange(const Vector3f &x, const Vector3f &y, const Vector3f &z);
 Transform rasterToNdc(const Float &resX, const Float &resY);
 Transform ndcToCam(const Float &aspect, const Float &fov);
 Transform rasterToCam(const Float &resX, const Float &resY, const Float &fov);
+Transform camToWorld(const Vector3f &from, const Vector3f &to);
+Transform rasterToWorld(const Float &resX, const Float &resY, const Float &fov,
+                        const Vector3f &from, const Vector3f &to);
 
 }  // namespace transform
 

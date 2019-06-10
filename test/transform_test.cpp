@@ -90,43 +90,69 @@ TEST(transform, composeTransforms) {
 }
 
 TEST(transform, rasterToNdc) {
-  Vector3f v1(0, 0, 1);
-  Vector3f v2(500, 250, 1);
-  Vector3f v3(1000, 500, 1);
+  Vector3f v1(0, 0, -1);
+  Vector3f v2(500, 250, -1);
+  Vector3f v3(1000, 500, -1);
   Transform t = rasterToNdc(1000, 500);
   Vector3f r1 = t.apply(v1, POINT);
   Vector3f r2 = t.apply(v2, POINT);
   Vector3f r3 = t.apply(v3, POINT);
 
-  ASSERT_EQ(r1, Vector3f(0, 0, 1));
-  ASSERT_EQ(r2, Vector3f(0.5, 0.5, 1));
-  ASSERT_EQ(r3, Vector3f(1, 1, 1));
+  ASSERT_EQ(r1, Vector3f(0, 0, -1));
+  ASSERT_EQ(r2, Vector3f(0.5, 0.5, -1));
+  ASSERT_EQ(r3, Vector3f(1, 1, -1));
 }
 
 TEST(transform, ndcToCam) {
-  Vector3f v1(0, 0, 1);
-  Vector3f v2(1, 1, 1);
-  Vector3f v3(0.5, 0.5, 1);
+  Vector3f v1(0, 0, -1);
+  Vector3f v2(1, 1, -1);
+  Vector3f v3(0.5, 0.5, -1);
   Transform t = ndcToCam(2, 90);
   Vector3f r1 = t.apply(v1, POINT);
   Vector3f r2 = t.apply(v2, POINT);
   Vector3f r3 = t.apply(v3, POINT);
 
-  ASSERT_EQ(r1, Vector3f(-2, 1, 1));
-  ASSERT_EQ(r2, Vector3f(2, -1, 1));
-  ASSERT_EQ(r3, Vector3f(0, 0, 1));
+  ASSERT_EQ(r1, Vector3f(-2, 1, -1));
+  ASSERT_EQ(r2, Vector3f(2, -1, -1));
+  ASSERT_EQ(r3, Vector3f(0, 0, -1));
 }
 
-TEST(camera, rasterToCam) {
-  Vector3f v1(0, 0, 1);
-  Vector3f v2(1000, 500, 1);
-  Vector3f v3(500, 250, 1);
+TEST(transform, rasterToCam) {
+  Vector3f v1(0, 0, -1);
+  Vector3f v2(1000, 500, -1);
+  Vector3f v3(500, 250, -1);
   Transform t = rasterToCam(1000, 500, 90);
   Vector3f r1 = t.apply(v1, POINT);
   Vector3f r2 = t.apply(v2, POINT);
   Vector3f r3 = t.apply(v3, POINT);
 
-  ASSERT_EQ(r1, Vector3f(-2, 1, 1));
-  ASSERT_EQ(r2, Vector3f(2, -1, 1));
-  ASSERT_EQ(r3, Vector3f(0, 0, 1));
+  ASSERT_EQ(r1, Vector3f(-2, 1, -1));
+  ASSERT_EQ(r2, Vector3f(2, -1, -1));
+  ASSERT_EQ(r3, Vector3f(0, 0, -1));
+}
+
+TEST(transform, worldToCam) {
+  Vector3f from(10, 10, 10);
+  Vector3f to(0, 0, 0);
+  Transform t = camToWorld(from ,to);
+
+  Vector3f v(0, 0, -1);
+
+  Vector3f delta = Vector3f(-1, -1, -1).normalized();
+  Vector3f r = t.apply(v, POINT);
+
+  ASSERT_EQ(r, from + delta);
+}
+
+TEST(transform, rasterToWorld) {
+  Vector3f from(10, 10, 10);
+  Vector3f to(0, 0, 0);
+  Transform t = rasterToWorld(1000, 500, 90, from, to);
+
+  Vector3f v(500, 250, -1);
+  Vector3f r = t.apply(v, POINT);
+
+  Vector3f delta = Vector3f(-1, -1, -1).normalized();
+
+  ASSERT_EQ(r, from + delta);
 }
