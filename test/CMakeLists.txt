@@ -5,6 +5,7 @@ add_executable(
     core/transform_test.cpp
     core/filehandle_test.cpp
     cameras/perspective_camera_test.cpp
+    hitables/sphere_test.cpp
     )
 
 target_link_libraries(
@@ -13,6 +14,7 @@ target_link_libraries(
     Eigen3::Eigen
     core
     cameras
+    hitables
     )
 
 add_test(

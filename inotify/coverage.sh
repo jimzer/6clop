@@ -7,4 +7,4 @@ lcov --directory ../build/src \
      --gcov-tool ../inotify/llvm-gcov.sh \
      --capture -o ../build/cov.info
 genhtml ../build/cov.info -o ../build/output
-chromium ../build/output/index.html
+chromium $(realpath ../build/output/index.html)

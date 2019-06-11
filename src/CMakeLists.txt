@@ -11,6 +11,7 @@ add_library(
     core/transform.hpp
     core/transform.cpp
     core/camera.hpp
+    core/hitable.hpp
     core/filehandle.hpp
     core/filehandle.cpp
     core/image_ppm.hpp
@@ -22,5 +23,12 @@ add_library(
     cameras/perspective_camera.cpp
 )
 
+add_library(
+    hitables
+    hitables/sphere.hpp
+    hitables/sphere.cpp
+)
+
 target_include_directories(core PUBLIC "${CMAKE_CURRENT_SOURCE_DIRECTORY/src}")
 target_include_directories(cameras PUBLIC "${CMAKE_CURRENT_SOURCE_DIRECTORY/src}")
+target_include_directories(hitables PUBLIC "${CMAKE_CURRENT_SOURCE_DIRECTORY/src}")
