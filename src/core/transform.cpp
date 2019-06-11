@@ -15,17 +15,28 @@ Transform::Transform(const Matrix4f &m) {
   ASSERT(!invMat.array().isNaN().any(), "NaN in transformation matrix");
 }
 
-Vector3f Transform::apply(const Vector3f &v, Geomtype g) {
+Vector3f Transform::apply(const Vector3f &v, Geomtype g) const {
   Vector4f resH = geometry::toHomog(v, g);
   resH = mat * resH;
   return geometry::toRegular(resH);
 }
 
-Vector3f Transform::invApply(const Vector3f &v, Geomtype g) {
+Vector3f Transform::invApply(const Vector3f &v, Geomtype g) const {
   Vector4f resH = geometry::toHomog(v, g);
   resH = invMat * resH;
   return geometry::toRegular(resH);
 };
+
+Ray Transform::apply(const Ray &r) const {
+  Vector3f nO = apply(r.o, POINT);
+  Vector3f nD = apply(r.d, VECTOR);
+  return Ray(nO, nD);
+}
+Ray Transform::invApply(const Ray &r) const {
+  Vector3f nO = invApply(r.o, POINT);
+  Vector3f nD = invApply(r.d, VECTOR);
+  return Ray(nO, nD);
+}
 
 void Transform::inverse() { std::swap(mat, invMat); }
 
@@ -93,7 +104,6 @@ Transform camToWorld(const Vector3f &from, const Vector3f &to) {
 
 Transform rasterToWorld(const Float &resX, const Float &resY, const Float &fov,
                         const Vector3f &from, const Vector3f &to) {
-
   Transform rCam = rasterToCam(resX, resY, fov);
   Transform cWorld = camToWorld(from, to);
   return composeTransforms(cWorld, rCam);

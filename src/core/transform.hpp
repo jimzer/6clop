@@ -2,6 +2,7 @@
 #define TRANSFORMH
 
 #include "core/cyclop.hpp"
+#include "core/ray.hpp"
 
 namespace transform {
 
@@ -13,10 +14,13 @@ class Transform {
 
   Transform();
   Transform(const Matrix4f &m);
-
-  Vector3f apply(const Vector3f &v, Geomtype g);
-  Vector3f invApply(const Vector3f &v, Geomtype g);
   void inverse();
+
+  Vector3f apply(const Vector3f &v, Geomtype g) const;
+  Vector3f invApply(const Vector3f &v, Geomtype g) const;
+
+  Ray apply(const Ray &r) const;
+  Ray invApply(const Ray &r) const;
 };
 
 Transform scaleTransform(const Vector3f &s);

@@ -8,22 +8,17 @@ class Ray;
 
 namespace camera {
 struct CameraSample {
-  Vector3f ndcSample;
-  Vector3f lensSample;
+  Vector2f filmSample;
+  Vector2f lensSample;
 };
 
 class Camera {
  public:
-  Float resX;
-  Float resY;
-  Vector3f from;
-  Vector3f to;
-  transform::Transform camWorld;
+  transform::Transform rasterToWorld;
 
-  Camera(const Vector3f &f, const Vector3f &t, const Float &rX,
-         const Float &rY);
-
-  virtual Ray genRay(const CameraSample &s) const;
+  Camera(){};
+  virtual ~Camera(){};
+  virtual Ray generateRay(const CameraSample &s) const = 0;
 };
 
 }  // namespace camera

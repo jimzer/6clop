@@ -11,7 +11,6 @@ add_library(
     core/transform.hpp
     core/transform.cpp
     core/camera.hpp
-    core/camera.cpp
     core/filehandle.hpp
     core/filehandle.cpp
     core/image_ppm.hpp
