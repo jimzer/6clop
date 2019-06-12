@@ -1,5 +1,4 @@
 #include "perspective_camera.hpp"
-#include "core/ray.hpp"
 
 namespace camera {
 PerspectiveCamera::PerspectiveCamera(const Vector3f &f, const Vector3f &t,

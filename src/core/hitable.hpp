@@ -9,7 +9,7 @@ class Ray;
 namespace hitable {
 struct HitRecord {
   Vector3f p;
-  Vector3f normal;
+  Vector3f n;
 };
 
 class Hitable {
@@ -19,7 +19,7 @@ class Hitable {
   Hitable(){};
   virtual ~Hitable(){};
 
-  virtual bool hit(const Ray &r, HitRecord &rec) const = 0;
+  virtual bool hit(const Ray &r, HitRecord *rec) const = 0;
 };
 
 }  // namespace hitable

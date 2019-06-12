@@ -5,7 +5,7 @@
 #include <iostream>
 
 template <typename... Args>
-void LOG(Args&&... args) {
+void LOG(Args &&... args) {
   (std::cout << ... << args) << std::endl << std::endl;
 }
 
@@ -43,5 +43,10 @@ typedef Eigen::Matrix<int, 3, 1> Vector3i;
 typedef Eigen::Matrix<Float, 4, 4> Matrix4f;
 
 enum Geomtype { VECTOR, POINT, NORMAL };
+
+
+bool solveQuadratic(const double &a, const double &b, const double &c,
+                    Float *t0, Float *t1);
+
 
 #endif

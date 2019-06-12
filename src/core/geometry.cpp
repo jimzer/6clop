@@ -1,5 +1,4 @@
 #include "geometry.hpp"
-#include "core/cyclop.hpp"
 
 namespace geometry {
   Vector4f toHomog(const Vector3f &v, Geomtype g) {

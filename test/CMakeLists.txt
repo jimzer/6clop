@@ -1,5 +1,6 @@
 add_executable(
     unit_tests
+    core/cyclop_test.cpp
     core/geometry_test.cpp
     core/ray_test.cpp
     core/transform_test.cpp
