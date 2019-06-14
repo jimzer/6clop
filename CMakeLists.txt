@@ -30,6 +30,9 @@ target_link_libraries (main PUBLIC Eigen3::Eigen)
 target_link_libraries(main PRIVATE core)
 target_link_libraries(main PRIVATE cameras)
 target_link_libraries(main PRIVATE hitables)
+target_link_libraries(main PRIVATE integrators)
+target_link_libraries(main PRIVATE samplers)
+target_link_libraries(main PRIVATE filters)
 
 
 include(cmake/googletest.cmake)

@@ -75,3 +75,27 @@ TEST(sphere, intersectNoIntersection) {
 
   ASSERT_EQ(b, false);
 }
+
+TEST(sphere, hitPIntersection) {
+  Transform t = translateTransform(Vector3f(10, 10, 10));
+  Sphere s(t, 4);
+  Vector3f o(0, 0, 0);
+  Vector3f d(1, 1, 1);
+  Ray r(o, d);
+
+  bool b = s.hitP(r);
+
+  ASSERT_EQ(b, true);
+}
+
+TEST(sphere, hitPNoIntersection) {
+  Transform t = translateTransform(Vector3f(10, 10, 10));
+  Sphere s(t, 4);
+  Vector3f o(0, 0, 0);
+  Vector3f d(1, 0, 0);
+  Ray r(o, d);
+
+  bool b = s.hitP(r);
+
+  ASSERT_EQ(b, false);
+}

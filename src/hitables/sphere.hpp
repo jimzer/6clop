@@ -1,5 +1,5 @@
-#ifndef PERSPECTIVECAMERAH
-#define PERSPECTIVECAMERAH
+#ifndef SPHEREH
+#define SPHEREH
 
 #include "core/cyclop.hpp"
 #include "core/hitable.hpp"
@@ -14,6 +14,7 @@ class Sphere : public Hitable {
   Sphere(const transform::Transform &t, const Float &r);
 
   bool hit(const Ray &r, HitRecord *rec) const;
+  bool hitP(const Ray &r) const;
 };
 
 }  // namespace hitable

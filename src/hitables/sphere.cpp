@@ -39,4 +39,30 @@ bool Sphere::hit(const Ray &r, HitRecord *rec) const {
   return true;
 }
 
+bool Sphere::hitP(const Ray &r) const {
+  Ray ro = objWorld.invApply(r);
+  Float a = ro.d.dot(ro.d);
+  Float b = 2 * ro.d.dot(ro.o);
+  Float c = ro.o.dot(ro.o) - radius * radius;
+
+  Float t0, t1;
+  if (!solveQuadratic(a, b, c, &t0, &t1)) {
+    return false;
+  }
+
+  if (t0 > ro.tMax || t1 < 0.0001) {
+    return false;
+  }
+
+  Float tHit = t0;
+  if (t0 < 0.0001) {
+    tHit = t1;
+    if (tHit > ro.tMax) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
 }  // namespace hitable

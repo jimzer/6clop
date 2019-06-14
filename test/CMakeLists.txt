@@ -5,8 +5,12 @@ add_executable(
     core/ray_test.cpp
     core/transform_test.cpp
     core/filehandle_test.cpp
+    core/film_test.cpp
     cameras/perspective_camera_test.cpp
     hitables/sphere_test.cpp
+    integrators/hit_integrator_test.cpp
+    samplers/naive_sampler_test.cpp
+    filters/box_filter_test.cpp
     )
 
 target_link_libraries(
@@ -14,8 +18,11 @@ target_link_libraries(
     gtest_main
     Eigen3::Eigen
     core
-    cameras
     hitables
+    cameras
+    integrators
+    samplers
+    filters
     )
 
 add_test(
