@@ -4,6 +4,7 @@
 
 TEST(filehandle, constructor) {
   FileHandle fh("test.txt", WRITE);
+  ASSERT_NO_THROW();
 }
 
 TEST(filehandle, writeLine) {

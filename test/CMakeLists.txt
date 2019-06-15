@@ -6,6 +6,7 @@ add_executable(
     core/transform_test.cpp
     core/filehandle_test.cpp
     core/film_test.cpp
+    core/image_ppm_test.cpp
     cameras/perspective_camera_test.cpp
     hitables/sphere_test.cpp
     integrators/hit_integrator_test.cpp
