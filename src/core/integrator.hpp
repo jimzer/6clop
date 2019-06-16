@@ -24,11 +24,13 @@ class Integrator {
 
 class SamplerIntegrator : public Integrator {
  public:
-  SamplerIntegrator(const sampler::Sampler &sampler, const camera::Camera &camera);
+  SamplerIntegrator(const sampler::Sampler &sampler,
+                    const camera::Camera &camera);
 
-  virtual void render(const Scene &scene) const = 0;
+  void render(const Scene &scene);
   virtual Vector3f li(const Ray &ray, const Scene &scene,
-                      const sampler::Sampler &sampler, const int &depth) const = 0;
+                      const sampler::Sampler &sampler,
+                      const int &depth) const = 0;
 };
 
 }  // namespace integrator

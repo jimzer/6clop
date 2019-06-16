@@ -1,12 +1,13 @@
 #include "perspective_camera.hpp"
+#include "core/film.hpp"
 
 namespace camera {
-PerspectiveCamera::PerspectiveCamera(const Vector3f &f, const Vector3f &t,
-                                     const Float &rX, const Float &rY,
-                                     const Float &fov_) {
+PerspectiveCamera::PerspectiveCamera(film::Film *fi, const Vector3f &f,
+                                     const Vector3f &t, const Float &fov_) {
+  film = fi;
   fov = fov_;
-  rasterWorld = transform::rasterToWorld(rX, rY, fov, f, t);
-  rasterCam = transform::rasterToCam(rX, rY, fov);
+  rasterWorld = transform::rasterToWorld(film->resolution.x(), film->resolution.y(), fov, f, t);
+  rasterCam = transform::rasterToCam(film->resolution.x(), film->resolution.y(), fov);
   camWorld = transform::camToWorld(f, t);
 }
 

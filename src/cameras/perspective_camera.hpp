@@ -7,6 +7,10 @@
 
 class Ray;
 
+namespace film {
+class Film;
+}
+
 namespace camera {
 
 class PerspectiveCamera : public Camera {
@@ -16,8 +20,8 @@ class PerspectiveCamera : public Camera {
   transform::Transform rasterCam;
   transform::Transform camWorld;
 
-  PerspectiveCamera(const Vector3f &f, const Vector3f &t, const Float &rX,
-                    const Float &rY, const Float &fov_);
+  PerspectiveCamera(film::Film *fi, const Vector3f &f, const Vector3f &t,
+                    const Float &fov_);
 
   Ray generateRay(const CameraSample &s) const;
 };

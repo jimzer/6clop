@@ -10,6 +10,8 @@ add_library(
     core/sampler.hpp
     core/filter.hpp
     core/geometry.hpp
+    core/integrator.hpp
+    core/integrator.cpp
     core/geometry.cpp
     core/ray.hpp
     core/ray.cpp

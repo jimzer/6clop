@@ -113,13 +113,20 @@ TEST(film, addTwoSamples) {
 TEST(film, writeImage) {
   std::string name = "test-film.ppm";
   Vector2i resolution(100, 50);
-  BoxFilter filter(2);
+  BoxFilter filter(0.5);
   Film film(name, resolution, &filter);
 
   for (Float x = 0; x < resolution.x(); x++) {
     for (Float y = 0; y < resolution.y(); y++) {
       Vector2f pFilm(x + 0.5, y + 0.5);
-      Vector3f radiance(std::cos(x/100), std::sin(y/50),  std::cos(x + y));
+      Float val1 = std::cos(x * (2*M_PI) / 25);
+      Float val2 = std::sin(y * (2*M_PI) / 25);
+      val1 = val1 > 0 ? 1 : -1;
+      val2 = val2 > 0 ? 1 : -1;
+      Float val = val1 * val2;
+      val = val > 0 ? 1 : 0;
+      Vector3f radiance(val, val, val);
+      //Vector3f radiance(100, 0, 0);
       film.addSample(pFilm, radiance.array().abs());
     }
   }

@@ -42,10 +42,11 @@ void Film::writeImage() {
   for (auto i = 0; i < total; i++) {
     Pixel pixel = pixels[i];
     Vector3f radiance = pixel.contribSum / pixel.filterWeightSum;
-    //Vector3f toneMapped = radiance.array() / (radiance + Vector3f(1)).array();
-    Vector3f toneMapped = radiance.normalized();
-    // Gamma correct
-    RGB rgb = {toneMapped.x(), toneMapped.y(), toneMapped.z()};
+    // Reinhard tone mapping
+    radiance = radiance.array() / (radiance + Vector3f(1, 1, 1)).array();
+    // Gamma correction
+    radiance = radiance.array().sqrt();
+    RGB rgb = {radiance.x(), radiance.y(), radiance.z()};
     rgbs[i] = rgb;
   }
 

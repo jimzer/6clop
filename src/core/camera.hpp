@@ -6,6 +6,10 @@
 
 class Ray;
 
+namespace film {
+class Film;
+}
+
 namespace camera {
 struct CameraSample {
   Vector2f filmSample;
@@ -14,7 +18,8 @@ struct CameraSample {
 
 class Camera {
  public:
-  transform::Transform rasterToWorld;
+  transform::Transform rasterWorld;
+  film::Film *film;
 
   Camera(){};
   virtual ~Camera(){};
