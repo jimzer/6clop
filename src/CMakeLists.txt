@@ -6,7 +6,6 @@ add_library(
     core/cyclop.cpp
     core/camera.hpp
     core/hitable.hpp
-    core/integrator.hpp
     core/sampler.hpp
     core/filter.hpp
     core/geometry.hpp

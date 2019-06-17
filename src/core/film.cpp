@@ -70,4 +70,8 @@ void Film::getContribPixels(const Vector2f &pFilm, Vector2i *minPixel,
   *maxPixel = Vector2i(maxX, maxY);
 }
 
+geometry::Bound2i Film::getPixelsBound() const {
+  return geometry::Bound2i(Vector2i(), resolution - Vector2i(1, 1));
+}
+
 }  // namespace film

@@ -67,7 +67,6 @@ inline Bound2iIterator begin(const Bound2i &b) {
 }
 
 inline Bound2iIterator end(const Bound2i &b) {
-  // static_assert(std::is_same<T, int>::value, "Works only with ints!");
   Vector2i end(b.pMin.x(), b.pMax.y() + 1);
   return Bound2iIterator(&b, end);
 }

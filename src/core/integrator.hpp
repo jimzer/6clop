@@ -19,17 +19,19 @@ class Integrator {
   Integrator(){};
   virtual ~Integrator(){};
 
-  virtual void render(const Scene &scene) const = 0;
+  virtual void render(const Scene &scene) = 0;
 };
 
-class SamplerIntegrator : public Integrator {
+class SamplerIntegrator {
  public:
-  SamplerIntegrator(const sampler::Sampler &sampler,
-                    const camera::Camera &camera);
+  sampler::Sampler *sampler;
+  camera::Camera *camera;
+
+  SamplerIntegrator(sampler::Sampler *s, camera::Camera *c);
+  virtual ~SamplerIntegrator(){};
 
   void render(const Scene &scene);
   virtual Vector3f li(const Ray &ray, const Scene &scene,
-                      const sampler::Sampler &sampler,
                       const int &depth) const = 0;
 };
 

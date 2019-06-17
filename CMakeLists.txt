@@ -12,7 +12,9 @@ set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fprofile-arcs -ftest-coverage")
+if(DEFINED ENV{COVERAGE})
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fprofile-arcs -ftest-coverage")
+endif()
 
 set(TBB /usr/include/tbb)
 
@@ -26,13 +28,13 @@ add_subdirectory(src)
 target_compile_features(main PRIVATE cxx_std_17)
 
 
-target_link_libraries (main PUBLIC Eigen3::Eigen)
+target_link_libraries(main PUBLIC Eigen3::Eigen)
 target_link_libraries(main PRIVATE core)
-target_link_libraries(main PRIVATE cameras)
-target_link_libraries(main PRIVATE hitables)
-target_link_libraries(main PRIVATE integrators)
-target_link_libraries(main PRIVATE samplers)
-target_link_libraries(main PRIVATE filters)
+target_link_libraries(main PRIVATE cameras core)
+target_link_libraries(main PRIVATE hitables core)
+target_link_libraries(main PRIVATE samplers core)
+target_link_libraries(main PRIVATE filters core)
+target_link_libraries(main PRIVATE integrators core)
 
 
 include(cmake/googletest.cmake)

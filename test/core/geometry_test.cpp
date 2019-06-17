@@ -55,7 +55,7 @@ TEST(geometry, toDegrees) {
 }
 
 TEST(geometry, Bound2iConstructor) {
-  Bound2i b();
+  Bound2i b(Vector2i, Vector2i);
 
   ASSERT_NO_THROW();
 }

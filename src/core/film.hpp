@@ -3,6 +3,7 @@
 
 #include "core/cyclop.hpp"
 #include "core/filter.hpp"
+#include "core/geometry.hpp"
 #include "core/image_ppm.hpp"
 
 namespace film {
@@ -36,6 +37,8 @@ class Film {
 
   void getContribPixels(const Vector2f &pFilm, Vector2i *minPixel,
                         Vector2i *maxPixel) const;
+
+  geometry::Bound2i getPixelsBound() const;
 };
 
 }  // namespace film

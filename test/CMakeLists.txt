@@ -14,17 +14,14 @@ add_executable(
     filters/box_filter_test.cpp
     )
 
-target_link_libraries(
-    unit_tests
-    gtest_main
-    Eigen3::Eigen
-    core
-    hitables
-    cameras
-    integrators
-    samplers
-    filters
-    )
+target_link_libraries(unit_tests gtest_main)
+target_link_libraries(unit_tests Eigen3::Eigen)
+target_link_libraries(unit_tests core)
+target_link_libraries(unit_tests cameras core)
+target_link_libraries(unit_tests hitables core)
+target_link_libraries(unit_tests samplers core)
+target_link_libraries(unit_tests filters core)
+target_link_libraries(unit_tests integrators core)
 
 add_test(
   NAME

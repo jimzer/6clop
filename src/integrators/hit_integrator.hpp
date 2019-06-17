@@ -6,8 +6,11 @@
 
 namespace integrator {
 
-class HitIntegrator : public Integrator {
+class HitIntegrator : public SamplerIntegrator {
  public:
+  HitIntegrator(sampler::Sampler *s, camera::Camera *c);
+
+  Vector3f li(const Ray &ray, const Scene &scene, const int &depth) const;
 };
 
 }  // namespace integrator
