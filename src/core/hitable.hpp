@@ -20,7 +20,7 @@ class Hitable {
   virtual ~Hitable(){};
 
   virtual bool hit(const Ray &r, HitRecord *rec) const = 0;
-  virtual bool hitP(const Ray &r) const = 0;
+  virtual bool hitCheck(const Ray &r) const = 0;
 };
 
 }  // namespace hitable

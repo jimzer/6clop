@@ -1,40 +1,34 @@
-#include "hitables/sphere.hpp"
+#include "core/scene.hpp"
 #include "core/cyclop.hpp"
 #include "core/ray.hpp"
 #include "core/transform.hpp"
 #include "gtest/gtest.h"
+#include "hitables/sphere.hpp"
 
 using namespace hitable;
 using namespace transform;
 
-TEST(sphere, constructor) {
+TEST(scene, constructor) {
   Vector3f vt(10, 10, 10);
   Transform t = translateTransform(vt);
   Sphere s(t, 2);
   Vector3f center(0, 0, 0);
   Vector3f p1(1, 1, 1);
   Vector3f w1(10, 0, 0);
+  Scene scene(&s);
 
-  Vector3f r1 = s.objWorld.apply(center, POINT);
-  Vector3f r2 = s.objWorld.apply(p1, POINT);
-  Vector3f r3 = s.objWorld.invApply(w1, POINT);
-
-  ASSERT_EQ(r1, Vector3f(10, 10, 10));
-  ASSERT_EQ(r2, Vector3f(11, 11, 11));
-  ASSERT_EQ(r3, Vector3f(0, -10, -10));
-
-  ASSERT_EQ(0, 0);
+  ASSERT_NO_THROW();
 }
 
-TEST(sphere, intersectNoTransform) {
+TEST(scene, intersectNoTransform) {
   Transform t;
   Sphere s(t, 2);
   Vector3f o(10, 10, 10);
   Vector3f d(-1, -1, -1);
   Ray r(o, d);
-
   HitRecord hr;
-  bool b = s.hit(r, &hr);
+  Scene scene(&s);
+  bool b = scene.hit(r, &hr);
 
   Vector3f r1 = Vector3f(1, 1, 1).normalized().eval() * 2;
   Vector3f r2 = Vector3f(1, 1, 1).normalized();
@@ -44,15 +38,16 @@ TEST(sphere, intersectNoTransform) {
   ASSERT_TRUE(hr.n.isApprox(r2));
 }
 
-TEST(sphere, intersectTransform) {
+TEST(scene, intersectTransform) {
   Transform t = translateTransform(Vector3f(10, 10, 10));
   Sphere s(t, 4);
   Vector3f o(-10, -10, -10);
   Vector3f d(1, 1, 1);
   Ray r(o, d);
+  Scene scene(&s);
 
   HitRecord hr;
-  bool b = s.hit(r, &hr);
+  bool b = scene.hit(r, &hr);
 
   Vector3f r1 =
       Vector3f(10, 10, 10) - Vector3f(1, 1, 1).normalized().eval() * 4;
@@ -63,39 +58,42 @@ TEST(sphere, intersectTransform) {
   ASSERT_TRUE(hr.n.isApprox(r2));
 }
 
-TEST(sphere, intersectNoIntersection) {
+TEST(scene, intersectNoIntersection) {
   Transform t = translateTransform(Vector3f(10, 10, 10));
   Sphere s(t, 4);
   Vector3f o(0, 0, 0);
   Vector3f d(1, 0, 0);
   Ray r(o, d);
+  Scene scene(&s);
 
   HitRecord hr;
-  bool b = s.hit(r, &hr);
+  bool b = scene.hit(r, &hr);
 
   ASSERT_EQ(b, false);
 }
 
-TEST(sphere, hitPIntersection) {
+TEST(scene, hitPIntersection) {
   Transform t = translateTransform(Vector3f(10, 10, 10));
   Sphere s(t, 4);
   Vector3f o(0, 0, 0);
   Vector3f d(1, 1, 1);
   Ray r(o, d);
+  Scene scene(&s);
 
-  bool b = s.hitCheck(r);
+  bool b = scene.hitCheck(r);
 
   ASSERT_EQ(b, true);
 }
 
-TEST(sphere, hitPNoIntersection) {
+TEST(scene, hitPNoIntersection) {
   Transform t = translateTransform(Vector3f(10, 10, 10));
   Sphere s(t, 4);
   Vector3f o(0, 0, 0);
   Vector3f d(1, 0, 0);
   Ray r(o, d);
+  Scene scene(&s);
 
-  bool b = s.hitCheck(r);
+  bool b = scene.hitCheck(r);
 
   ASSERT_EQ(b, false);
 }

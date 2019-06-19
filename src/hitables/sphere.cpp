@@ -39,7 +39,7 @@ bool Sphere::hit(const Ray &r, HitRecord *rec) const {
   return true;
 }
 
-bool Sphere::hitP(const Ray &r) const {
+bool Sphere::hitCheck(const Ray &r) const {
   Ray ro = objWorld.invApply(r);
   Float a = ro.d.dot(ro.d);
   Float b = 2 * ro.d.dot(ro.o);

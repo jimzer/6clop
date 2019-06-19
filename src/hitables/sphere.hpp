@@ -14,7 +14,7 @@ class Sphere : public Hitable {
   Sphere(const transform::Transform &t, const Float &r);
 
   bool hit(const Ray &r, HitRecord *rec) const;
-  bool hitP(const Ray &r) const;
+  bool hitCheck(const Ray &r) const;
 };
 
 }  // namespace hitable

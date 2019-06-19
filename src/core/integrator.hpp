@@ -26,8 +26,9 @@ class SamplerIntegrator {
  public:
   sampler::Sampler *sampler;
   camera::Camera *camera;
+  const int samplesPerPixel;
 
-  SamplerIntegrator(sampler::Sampler *s, camera::Camera *c);
+  SamplerIntegrator(sampler::Sampler *s, camera::Camera *c, const int &ns);
   virtual ~SamplerIntegrator(){};
 
   void render(const Scene &scene);

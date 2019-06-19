@@ -7,9 +7,11 @@
 
 class Scene {
  public:
-  std::vector<std::shared_ptr<hitable::Hitable>> hitables;
+  hitable::Hitable* aggregate;
 
-  Scene(const std::vector<std::shared_ptr<hitable::Hitable>> &h);
+  Scene(hitable::Hitable *agg);
+  bool hit(const Ray &r, hitable::HitRecord *rec) const;
+  bool hitCheck(const Ray &r) const;
 };
 
 #endif

@@ -1,4 +1,11 @@
 #include "scene.hpp"
 
-Scene::Scene(const std::vector<std::shared_ptr<hitable::Hitable>> &h)
-    : hitables(h){};
+Scene::Scene(hitable::Hitable *agg) : aggregate(agg){};
+
+bool Scene::hit(const Ray &r, hitable::HitRecord *rec) const {
+  return aggregate->hit(r, rec);
+}
+
+bool Scene::hitCheck(const Ray &r) const {
+  return aggregate->hitCheck(r);
+}

@@ -47,6 +47,8 @@ add_library(
     samplers
     samplers/naive_sampler.hpp
     samplers/naive_sampler.cpp
+    samplers/const_sampler.hpp
+    samplers/const_sampler.cpp
 )
 
 add_library(
