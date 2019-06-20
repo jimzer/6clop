@@ -3,3 +3,7 @@
 build/
 __pycache__/
 .env/
+
+doc/*
+
+!doc/.gitkeep
