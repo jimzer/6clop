@@ -1,0 +1,85 @@
+\hypertarget{classcamera_1_1PerspectiveCamera}{}\section{camera\+::Perspective\+Camera Class Reference}
+\label{classcamera_1_1PerspectiveCamera}\index{camera::PerspectiveCamera@{camera::PerspectiveCamera}}
+
+
+{\ttfamily \#include $<$perspective\+\_\+camera.\+hpp$>$}
+
+Inheritance diagram for camera\+::Perspective\+Camera\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classcamera_1_1PerspectiveCamera}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classcamera_1_1PerspectiveCamera_a4d23517122064d22a7af054cc879c409}{Perspective\+Camera}} (\mbox{\hyperlink{classfilm_1_1Film}{film\+::\+Film}} $\ast$fi, const \mbox{\hyperlink{cyclop_8hpp_a5a0a2e85b081623ef3f7e7e8d43024f5}{Vector3f}} \&f, const \mbox{\hyperlink{cyclop_8hpp_a5a0a2e85b081623ef3f7e7e8d43024f5}{Vector3f}} \&t, const \mbox{\hyperlink{cyclop_8hpp_a07afd7094cb489cbd514c76e6f55d34f}{Float}} \&fov\+\_\+)
+\item 
+\mbox{\hyperlink{classRay}{Ray}} \mbox{\hyperlink{classcamera_1_1PerspectiveCamera_a15d07767da0fb7258437095b6a41f30b}{generate\+Ray}} (const \mbox{\hyperlink{structcamera_1_1CameraSample}{Camera\+Sample}} \&s) const
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{cyclop_8hpp_a07afd7094cb489cbd514c76e6f55d34f}{Float}} \mbox{\hyperlink{classcamera_1_1PerspectiveCamera_a06c7f21b8374d5bd322e5ea5a9ec9f89}{fov}}
+\item 
+\mbox{\hyperlink{classtransform_1_1Transform}{transform\+::\+Transform}} \mbox{\hyperlink{classcamera_1_1PerspectiveCamera_aedff86de2d3ce5edef545baad2797b0f}{raster\+World}}
+\item 
+\mbox{\hyperlink{classtransform_1_1Transform}{transform\+::\+Transform}} \mbox{\hyperlink{classcamera_1_1PerspectiveCamera_a83c1c62b9973b5d80760cbee833333c1}{raster\+Cam}}
+\item 
+\mbox{\hyperlink{classtransform_1_1Transform}{transform\+::\+Transform}} \mbox{\hyperlink{classcamera_1_1PerspectiveCamera_a9d851c34873ffe2ca8fbfb894b487d51}{cam\+World}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classcamera_1_1PerspectiveCamera_a4d23517122064d22a7af054cc879c409}\label{classcamera_1_1PerspectiveCamera_a4d23517122064d22a7af054cc879c409}} 
+\index{camera::PerspectiveCamera@{camera::PerspectiveCamera}!PerspectiveCamera@{PerspectiveCamera}}
+\index{PerspectiveCamera@{PerspectiveCamera}!camera::PerspectiveCamera@{camera::PerspectiveCamera}}
+\subsubsection{\texorpdfstring{PerspectiveCamera()}{PerspectiveCamera()}}
+{\footnotesize\ttfamily camera\+::\+Perspective\+Camera\+::\+Perspective\+Camera (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classfilm_1_1Film}{film\+::\+Film}} $\ast$}]{fi,  }\item[{const \mbox{\hyperlink{cyclop_8hpp_a5a0a2e85b081623ef3f7e7e8d43024f5}{Vector3f}} \&}]{f,  }\item[{const \mbox{\hyperlink{cyclop_8hpp_a5a0a2e85b081623ef3f7e7e8d43024f5}{Vector3f}} \&}]{t,  }\item[{const \mbox{\hyperlink{cyclop_8hpp_a07afd7094cb489cbd514c76e6f55d34f}{Float}} \&}]{fov\+\_\+ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classcamera_1_1PerspectiveCamera_a15d07767da0fb7258437095b6a41f30b}\label{classcamera_1_1PerspectiveCamera_a15d07767da0fb7258437095b6a41f30b}} 
+\index{camera::PerspectiveCamera@{camera::PerspectiveCamera}!generateRay@{generateRay}}
+\index{generateRay@{generateRay}!camera::PerspectiveCamera@{camera::PerspectiveCamera}}
+\subsubsection{\texorpdfstring{generateRay()}{generateRay()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRay}{Ray}} camera\+::\+Perspective\+Camera\+::generate\+Ray (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structcamera_1_1CameraSample}{Camera\+Sample}} \&}]{s }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classcamera_1_1Camera_ac8029a1623243615089d0847cdf49585}{camera\+::\+Camera}}.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classcamera_1_1PerspectiveCamera_a9d851c34873ffe2ca8fbfb894b487d51}\label{classcamera_1_1PerspectiveCamera_a9d851c34873ffe2ca8fbfb894b487d51}} 
+\index{camera::PerspectiveCamera@{camera::PerspectiveCamera}!camWorld@{camWorld}}
+\index{camWorld@{camWorld}!camera::PerspectiveCamera@{camera::PerspectiveCamera}}
+\subsubsection{\texorpdfstring{camWorld}{camWorld}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classtransform_1_1Transform}{transform\+::\+Transform}} camera\+::\+Perspective\+Camera\+::cam\+World}
+
+\mbox{\Hypertarget{classcamera_1_1PerspectiveCamera_a06c7f21b8374d5bd322e5ea5a9ec9f89}\label{classcamera_1_1PerspectiveCamera_a06c7f21b8374d5bd322e5ea5a9ec9f89}} 
+\index{camera::PerspectiveCamera@{camera::PerspectiveCamera}!fov@{fov}}
+\index{fov@{fov}!camera::PerspectiveCamera@{camera::PerspectiveCamera}}
+\subsubsection{\texorpdfstring{fov}{fov}}
+{\footnotesize\ttfamily \mbox{\hyperlink{cyclop_8hpp_a07afd7094cb489cbd514c76e6f55d34f}{Float}} camera\+::\+Perspective\+Camera\+::fov}
+
+\mbox{\Hypertarget{classcamera_1_1PerspectiveCamera_a83c1c62b9973b5d80760cbee833333c1}\label{classcamera_1_1PerspectiveCamera_a83c1c62b9973b5d80760cbee833333c1}} 
+\index{camera::PerspectiveCamera@{camera::PerspectiveCamera}!rasterCam@{rasterCam}}
+\index{rasterCam@{rasterCam}!camera::PerspectiveCamera@{camera::PerspectiveCamera}}
+\subsubsection{\texorpdfstring{rasterCam}{rasterCam}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classtransform_1_1Transform}{transform\+::\+Transform}} camera\+::\+Perspective\+Camera\+::raster\+Cam}
+
+\mbox{\Hypertarget{classcamera_1_1PerspectiveCamera_aedff86de2d3ce5edef545baad2797b0f}\label{classcamera_1_1PerspectiveCamera_aedff86de2d3ce5edef545baad2797b0f}} 
+\index{camera::PerspectiveCamera@{camera::PerspectiveCamera}!rasterWorld@{rasterWorld}}
+\index{rasterWorld@{rasterWorld}!camera::PerspectiveCamera@{camera::PerspectiveCamera}}
+\subsubsection{\texorpdfstring{rasterWorld}{rasterWorld}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classtransform_1_1Transform}{transform\+::\+Transform}} camera\+::\+Perspective\+Camera\+::raster\+World}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/cameras/\mbox{\hyperlink{perspective__camera_8hpp}{perspective\+\_\+camera.\+hpp}}\item 
+src/cameras/\mbox{\hyperlink{perspective__camera_8cpp}{perspective\+\_\+camera.\+cpp}}\end{DoxyCompactItemize}

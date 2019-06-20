@@ -1,0 +1,93 @@
+\hypertarget{classintegrator_1_1SamplerIntegrator}{}\section{integrator\+::Sampler\+Integrator Class Reference}
+\label{classintegrator_1_1SamplerIntegrator}\index{integrator::SamplerIntegrator@{integrator::SamplerIntegrator}}
+
+
+{\ttfamily \#include $<$integrator.\+hpp$>$}
+
+Inheritance diagram for integrator\+::Sampler\+Integrator\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classintegrator_1_1SamplerIntegrator}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classintegrator_1_1SamplerIntegrator_ae74036826d99f191f14d6918b806601b}{Sampler\+Integrator}} (\mbox{\hyperlink{classsampler_1_1Sampler}{sampler\+::\+Sampler}} $\ast$s, \mbox{\hyperlink{classcamera_1_1Camera}{camera\+::\+Camera}} $\ast$c, const int \&ns)
+\item 
+virtual \mbox{\hyperlink{classintegrator_1_1SamplerIntegrator_abf145ca0ae0e151609808ad5dc6e1564}{$\sim$\+Sampler\+Integrator}} ()
+\item 
+void \mbox{\hyperlink{classintegrator_1_1SamplerIntegrator_af02630880edd63090b71e414b25e895f}{render}} (const \mbox{\hyperlink{classScene}{Scene}} \&scene)
+\item 
+virtual \mbox{\hyperlink{cyclop_8hpp_a5a0a2e85b081623ef3f7e7e8d43024f5}{Vector3f}} \mbox{\hyperlink{classintegrator_1_1SamplerIntegrator_ae08842b8b93175f1ee23a93733161181}{li}} (const \mbox{\hyperlink{classRay}{Ray}} \&ray, const \mbox{\hyperlink{classScene}{Scene}} \&scene, const int \&depth) const =0
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsampler_1_1Sampler}{sampler\+::\+Sampler}} $\ast$ \mbox{\hyperlink{classintegrator_1_1SamplerIntegrator_aba18513db3ec97411a54b11a2a6791a7}{sampler}}
+\item 
+\mbox{\hyperlink{classcamera_1_1Camera}{camera\+::\+Camera}} $\ast$ \mbox{\hyperlink{classintegrator_1_1SamplerIntegrator_aa86b6ccede7a595a1219869ed44d8e92}{camera}}
+\item 
+const int \mbox{\hyperlink{classintegrator_1_1SamplerIntegrator_a5efe3a51951d68701245544e220c9e8d}{samples\+Per\+Pixel}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classintegrator_1_1SamplerIntegrator_ae74036826d99f191f14d6918b806601b}\label{classintegrator_1_1SamplerIntegrator_ae74036826d99f191f14d6918b806601b}} 
+\index{integrator::SamplerIntegrator@{integrator::SamplerIntegrator}!SamplerIntegrator@{SamplerIntegrator}}
+\index{SamplerIntegrator@{SamplerIntegrator}!integrator::SamplerIntegrator@{integrator::SamplerIntegrator}}
+\subsubsection{\texorpdfstring{SamplerIntegrator()}{SamplerIntegrator()}}
+{\footnotesize\ttfamily integrator\+::\+Sampler\+Integrator\+::\+Sampler\+Integrator (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classsampler_1_1Sampler}{sampler\+::\+Sampler}} $\ast$}]{s,  }\item[{\mbox{\hyperlink{classcamera_1_1Camera}{camera\+::\+Camera}} $\ast$}]{c,  }\item[{const int \&}]{ns }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classintegrator_1_1SamplerIntegrator_abf145ca0ae0e151609808ad5dc6e1564}\label{classintegrator_1_1SamplerIntegrator_abf145ca0ae0e151609808ad5dc6e1564}} 
+\index{integrator::SamplerIntegrator@{integrator::SamplerIntegrator}!````~SamplerIntegrator@{$\sim$SamplerIntegrator}}
+\index{````~SamplerIntegrator@{$\sim$SamplerIntegrator}!integrator::SamplerIntegrator@{integrator::SamplerIntegrator}}
+\subsubsection{\texorpdfstring{$\sim$SamplerIntegrator()}{~SamplerIntegrator()}}
+{\footnotesize\ttfamily virtual integrator\+::\+Sampler\+Integrator\+::$\sim$\+Sampler\+Integrator (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classintegrator_1_1SamplerIntegrator_ae08842b8b93175f1ee23a93733161181}\label{classintegrator_1_1SamplerIntegrator_ae08842b8b93175f1ee23a93733161181}} 
+\index{integrator::SamplerIntegrator@{integrator::SamplerIntegrator}!li@{li}}
+\index{li@{li}!integrator::SamplerIntegrator@{integrator::SamplerIntegrator}}
+\subsubsection{\texorpdfstring{li()}{li()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{cyclop_8hpp_a5a0a2e85b081623ef3f7e7e8d43024f5}{Vector3f}} integrator\+::\+Sampler\+Integrator\+::li (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRay}{Ray}} \&}]{ray,  }\item[{const \mbox{\hyperlink{classScene}{Scene}} \&}]{scene,  }\item[{const int \&}]{depth }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classintegrator_1_1HitIntegrator_ad496bec99d8dbb65eeb0b32787f087dc}{integrator\+::\+Hit\+Integrator}}.
+
+\mbox{\Hypertarget{classintegrator_1_1SamplerIntegrator_af02630880edd63090b71e414b25e895f}\label{classintegrator_1_1SamplerIntegrator_af02630880edd63090b71e414b25e895f}} 
+\index{integrator::SamplerIntegrator@{integrator::SamplerIntegrator}!render@{render}}
+\index{render@{render}!integrator::SamplerIntegrator@{integrator::SamplerIntegrator}}
+\subsubsection{\texorpdfstring{render()}{render()}}
+{\footnotesize\ttfamily void integrator\+::\+Sampler\+Integrator\+::render (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classScene}{Scene}} \&}]{scene }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classintegrator_1_1SamplerIntegrator_aa86b6ccede7a595a1219869ed44d8e92}\label{classintegrator_1_1SamplerIntegrator_aa86b6ccede7a595a1219869ed44d8e92}} 
+\index{integrator::SamplerIntegrator@{integrator::SamplerIntegrator}!camera@{camera}}
+\index{camera@{camera}!integrator::SamplerIntegrator@{integrator::SamplerIntegrator}}
+\subsubsection{\texorpdfstring{camera}{camera}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classcamera_1_1Camera}{camera\+::\+Camera}}$\ast$ integrator\+::\+Sampler\+Integrator\+::camera}
+
+\mbox{\Hypertarget{classintegrator_1_1SamplerIntegrator_aba18513db3ec97411a54b11a2a6791a7}\label{classintegrator_1_1SamplerIntegrator_aba18513db3ec97411a54b11a2a6791a7}} 
+\index{integrator::SamplerIntegrator@{integrator::SamplerIntegrator}!sampler@{sampler}}
+\index{sampler@{sampler}!integrator::SamplerIntegrator@{integrator::SamplerIntegrator}}
+\subsubsection{\texorpdfstring{sampler}{sampler}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classsampler_1_1Sampler}{sampler\+::\+Sampler}}$\ast$ integrator\+::\+Sampler\+Integrator\+::sampler}
+
+\mbox{\Hypertarget{classintegrator_1_1SamplerIntegrator_a5efe3a51951d68701245544e220c9e8d}\label{classintegrator_1_1SamplerIntegrator_a5efe3a51951d68701245544e220c9e8d}} 
+\index{integrator::SamplerIntegrator@{integrator::SamplerIntegrator}!samplesPerPixel@{samplesPerPixel}}
+\index{samplesPerPixel@{samplesPerPixel}!integrator::SamplerIntegrator@{integrator::SamplerIntegrator}}
+\subsubsection{\texorpdfstring{samplesPerPixel}{samplesPerPixel}}
+{\footnotesize\ttfamily const int integrator\+::\+Sampler\+Integrator\+::samples\+Per\+Pixel}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/core/\mbox{\hyperlink{integrator_8hpp}{integrator.\+hpp}}\item 
+src/core/\mbox{\hyperlink{integrator_8cpp}{integrator.\+cpp}}\end{DoxyCompactItemize}

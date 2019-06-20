@@ -1,0 +1,145 @@
+\hypertarget{cyclop_8hpp}{}\section{src/core/cyclop.hpp File Reference}
+\label{cyclop_8hpp}\index{src/core/cyclop.hpp@{src/core/cyclop.hpp}}
+{\ttfamily \#include $<$Eigen/\+Dense$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{cyclop_8hpp_aa06eedd6f738a415870e97a375337d51}{A\+S\+S\+E\+RT}}(condition,  message)
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef float \mbox{\hyperlink{cyclop_8hpp_a07afd7094cb489cbd514c76e6f55d34f}{Float}}
+\item 
+typedef Eigen\+::\+Matrix$<$ \mbox{\hyperlink{cyclop_8hpp_a07afd7094cb489cbd514c76e6f55d34f}{Float}}, 2, 1 $>$ \mbox{\hyperlink{cyclop_8hpp_a0c5eff6545fe0b71d0592c88d930b697}{Vector2f}}
+\item 
+typedef Eigen\+::\+Matrix$<$ \mbox{\hyperlink{cyclop_8hpp_a07afd7094cb489cbd514c76e6f55d34f}{Float}}, 3, 1 $>$ \mbox{\hyperlink{cyclop_8hpp_a5a0a2e85b081623ef3f7e7e8d43024f5}{Vector3f}}
+\item 
+typedef Eigen\+::\+Matrix$<$ \mbox{\hyperlink{cyclop_8hpp_a07afd7094cb489cbd514c76e6f55d34f}{Float}}, 4, 1 $>$ \mbox{\hyperlink{cyclop_8hpp_ac277e3b99e79f681e1e8b633243a9abf}{Vector4f}}
+\item 
+typedef Eigen\+::\+Matrix$<$ int, 2, 1 $>$ \mbox{\hyperlink{cyclop_8hpp_ac9c6c66d543f1c0c5bc66579727dae30}{Vector2i}}
+\item 
+typedef Eigen\+::\+Matrix$<$ int, 3, 1 $>$ \mbox{\hyperlink{cyclop_8hpp_a95009219c750afe90c8adde9215dc9f7}{Vector3i}}
+\item 
+typedef Eigen\+::\+Matrix$<$ \mbox{\hyperlink{cyclop_8hpp_a07afd7094cb489cbd514c76e6f55d34f}{Float}}, 4, 4 $>$ \mbox{\hyperlink{cyclop_8hpp_a65205693559e288093427c05b128827f}{Matrix4f}}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{cyclop_8hpp_a2317999143a1598860004551163419b5}{Geomtype}} \{ \mbox{\hyperlink{cyclop_8hpp_a2317999143a1598860004551163419b5a1a85ef13eaa80e8561743892f9dba958}{V\+E\+C\+T\+OR}}, 
+\mbox{\hyperlink{cyclop_8hpp_a2317999143a1598860004551163419b5a15108ccafa3232b9067f889b6156f565}{P\+O\+I\+NT}}, 
+\mbox{\hyperlink{cyclop_8hpp_a2317999143a1598860004551163419b5a50d1448013c6f17125caee18aa418af7}{N\+O\+R\+M\+AL}}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename... Args$>$ }\\void \mbox{\hyperlink{cyclop_8hpp_a3037be189067b1d1d587a8a83ead1ce4}{L\+OG}} (Args \&\&... args)
+\item 
+bool \mbox{\hyperlink{cyclop_8hpp_a304e226de2b96477542f6987b55e1d7b}{solve\+Quadratic}} (const double \&a, const double \&b, const double \&c, \mbox{\hyperlink{cyclop_8hpp_a07afd7094cb489cbd514c76e6f55d34f}{Float}} $\ast$t0, \mbox{\hyperlink{cyclop_8hpp_a07afd7094cb489cbd514c76e6f55d34f}{Float}} $\ast$t1)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{cyclop_8hpp_aa06eedd6f738a415870e97a375337d51}\label{cyclop_8hpp_aa06eedd6f738a415870e97a375337d51}} 
+\index{cyclop.hpp@{cyclop.hpp}!ASSERT@{ASSERT}}
+\index{ASSERT@{ASSERT}!cyclop.hpp@{cyclop.hpp}}
+\subsubsection{\texorpdfstring{ASSERT}{ASSERT}}
+{\footnotesize\ttfamily \#define A\+S\+S\+E\+RT(\begin{DoxyParamCaption}\item[{}]{condition,  }\item[{}]{message }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordflow}{do} \{                                                                   \(\backslash\)}
+\DoxyCodeLine{    if (!(condition)) \{                                                  \(\backslash\)}
+\DoxyCodeLine{      std::cerr << \textcolor{stringliteral}{"Assertion `"} \#condition \textcolor{stringliteral}{"` failed in "} << \_\_FILE\_\_   \(\backslash\)}
+\DoxyCodeLine{                << \textcolor{stringliteral}{" line "} << \_\_LINE\_\_ << \textcolor{stringliteral}{": "} << message << std::endl; \(\backslash\)}
+\DoxyCodeLine{      std::terminate();                                                  \(\backslash\)}
+\DoxyCodeLine{    \}                                                                    \(\backslash\)}
+\DoxyCodeLine{  \} \textcolor{keywordflow}{while} (\textcolor{keyword}{false})}
+
+\end{DoxyCode}
+
+
+\subsection{Typedef Documentation}
+\mbox{\Hypertarget{cyclop_8hpp_a07afd7094cb489cbd514c76e6f55d34f}\label{cyclop_8hpp_a07afd7094cb489cbd514c76e6f55d34f}} 
+\index{cyclop.hpp@{cyclop.hpp}!Float@{Float}}
+\index{Float@{Float}!cyclop.hpp@{cyclop.hpp}}
+\subsubsection{\texorpdfstring{Float}{Float}}
+{\footnotesize\ttfamily typedef float \mbox{\hyperlink{cyclop_8hpp_a07afd7094cb489cbd514c76e6f55d34f}{Float}}}
+
+\mbox{\Hypertarget{cyclop_8hpp_a65205693559e288093427c05b128827f}\label{cyclop_8hpp_a65205693559e288093427c05b128827f}} 
+\index{cyclop.hpp@{cyclop.hpp}!Matrix4f@{Matrix4f}}
+\index{Matrix4f@{Matrix4f}!cyclop.hpp@{cyclop.hpp}}
+\subsubsection{\texorpdfstring{Matrix4f}{Matrix4f}}
+{\footnotesize\ttfamily typedef Eigen\+::\+Matrix$<$\mbox{\hyperlink{cyclop_8hpp_a07afd7094cb489cbd514c76e6f55d34f}{Float}}, 4, 4$>$ \mbox{\hyperlink{cyclop_8hpp_a65205693559e288093427c05b128827f}{Matrix4f}}}
+
+\mbox{\Hypertarget{cyclop_8hpp_a0c5eff6545fe0b71d0592c88d930b697}\label{cyclop_8hpp_a0c5eff6545fe0b71d0592c88d930b697}} 
+\index{cyclop.hpp@{cyclop.hpp}!Vector2f@{Vector2f}}
+\index{Vector2f@{Vector2f}!cyclop.hpp@{cyclop.hpp}}
+\subsubsection{\texorpdfstring{Vector2f}{Vector2f}}
+{\footnotesize\ttfamily typedef Eigen\+::\+Matrix$<$\mbox{\hyperlink{cyclop_8hpp_a07afd7094cb489cbd514c76e6f55d34f}{Float}}, 2, 1$>$ \mbox{\hyperlink{cyclop_8hpp_a0c5eff6545fe0b71d0592c88d930b697}{Vector2f}}}
+
+\mbox{\Hypertarget{cyclop_8hpp_ac9c6c66d543f1c0c5bc66579727dae30}\label{cyclop_8hpp_ac9c6c66d543f1c0c5bc66579727dae30}} 
+\index{cyclop.hpp@{cyclop.hpp}!Vector2i@{Vector2i}}
+\index{Vector2i@{Vector2i}!cyclop.hpp@{cyclop.hpp}}
+\subsubsection{\texorpdfstring{Vector2i}{Vector2i}}
+{\footnotesize\ttfamily typedef Eigen\+::\+Matrix$<$int, 2, 1$>$ \mbox{\hyperlink{cyclop_8hpp_ac9c6c66d543f1c0c5bc66579727dae30}{Vector2i}}}
+
+\mbox{\Hypertarget{cyclop_8hpp_a5a0a2e85b081623ef3f7e7e8d43024f5}\label{cyclop_8hpp_a5a0a2e85b081623ef3f7e7e8d43024f5}} 
+\index{cyclop.hpp@{cyclop.hpp}!Vector3f@{Vector3f}}
+\index{Vector3f@{Vector3f}!cyclop.hpp@{cyclop.hpp}}
+\subsubsection{\texorpdfstring{Vector3f}{Vector3f}}
+{\footnotesize\ttfamily typedef Eigen\+::\+Matrix$<$\mbox{\hyperlink{cyclop_8hpp_a07afd7094cb489cbd514c76e6f55d34f}{Float}}, 3, 1$>$ \mbox{\hyperlink{cyclop_8hpp_a5a0a2e85b081623ef3f7e7e8d43024f5}{Vector3f}}}
+
+\mbox{\Hypertarget{cyclop_8hpp_a95009219c750afe90c8adde9215dc9f7}\label{cyclop_8hpp_a95009219c750afe90c8adde9215dc9f7}} 
+\index{cyclop.hpp@{cyclop.hpp}!Vector3i@{Vector3i}}
+\index{Vector3i@{Vector3i}!cyclop.hpp@{cyclop.hpp}}
+\subsubsection{\texorpdfstring{Vector3i}{Vector3i}}
+{\footnotesize\ttfamily typedef Eigen\+::\+Matrix$<$int, 3, 1$>$ \mbox{\hyperlink{cyclop_8hpp_a95009219c750afe90c8adde9215dc9f7}{Vector3i}}}
+
+\mbox{\Hypertarget{cyclop_8hpp_ac277e3b99e79f681e1e8b633243a9abf}\label{cyclop_8hpp_ac277e3b99e79f681e1e8b633243a9abf}} 
+\index{cyclop.hpp@{cyclop.hpp}!Vector4f@{Vector4f}}
+\index{Vector4f@{Vector4f}!cyclop.hpp@{cyclop.hpp}}
+\subsubsection{\texorpdfstring{Vector4f}{Vector4f}}
+{\footnotesize\ttfamily typedef Eigen\+::\+Matrix$<$\mbox{\hyperlink{cyclop_8hpp_a07afd7094cb489cbd514c76e6f55d34f}{Float}}, 4, 1$>$ \mbox{\hyperlink{cyclop_8hpp_ac277e3b99e79f681e1e8b633243a9abf}{Vector4f}}}
+
+
+
+\subsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{cyclop_8hpp_a2317999143a1598860004551163419b5}\label{cyclop_8hpp_a2317999143a1598860004551163419b5}} 
+\index{cyclop.hpp@{cyclop.hpp}!Geomtype@{Geomtype}}
+\index{Geomtype@{Geomtype}!cyclop.hpp@{cyclop.hpp}}
+\subsubsection{\texorpdfstring{Geomtype}{Geomtype}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{cyclop_8hpp_a2317999143a1598860004551163419b5}{Geomtype}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{VECTOR@{VECTOR}!cyclop.hpp@{cyclop.hpp}}\index{cyclop.hpp@{cyclop.hpp}!VECTOR@{VECTOR}}}\mbox{\Hypertarget{cyclop_8hpp_a2317999143a1598860004551163419b5a1a85ef13eaa80e8561743892f9dba958}\label{cyclop_8hpp_a2317999143a1598860004551163419b5a1a85ef13eaa80e8561743892f9dba958}} 
+V\+E\+C\+T\+OR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{POINT@{POINT}!cyclop.hpp@{cyclop.hpp}}\index{cyclop.hpp@{cyclop.hpp}!POINT@{POINT}}}\mbox{\Hypertarget{cyclop_8hpp_a2317999143a1598860004551163419b5a15108ccafa3232b9067f889b6156f565}\label{cyclop_8hpp_a2317999143a1598860004551163419b5a15108ccafa3232b9067f889b6156f565}} 
+P\+O\+I\+NT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NORMAL@{NORMAL}!cyclop.hpp@{cyclop.hpp}}\index{cyclop.hpp@{cyclop.hpp}!NORMAL@{NORMAL}}}\mbox{\Hypertarget{cyclop_8hpp_a2317999143a1598860004551163419b5a50d1448013c6f17125caee18aa418af7}\label{cyclop_8hpp_a2317999143a1598860004551163419b5a50d1448013c6f17125caee18aa418af7}} 
+N\+O\+R\+M\+AL&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{cyclop_8hpp_a3037be189067b1d1d587a8a83ead1ce4}\label{cyclop_8hpp_a3037be189067b1d1d587a8a83ead1ce4}} 
+\index{cyclop.hpp@{cyclop.hpp}!LOG@{LOG}}
+\index{LOG@{LOG}!cyclop.hpp@{cyclop.hpp}}
+\subsubsection{\texorpdfstring{LOG()}{LOG()}}
+{\footnotesize\ttfamily template$<$typename... Args$>$ \\
+void L\+OG (\begin{DoxyParamCaption}\item[{Args \&\&...}]{args }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{cyclop_8hpp_a304e226de2b96477542f6987b55e1d7b}\label{cyclop_8hpp_a304e226de2b96477542f6987b55e1d7b}} 
+\index{cyclop.hpp@{cyclop.hpp}!solveQuadratic@{solveQuadratic}}
+\index{solveQuadratic@{solveQuadratic}!cyclop.hpp@{cyclop.hpp}}
+\subsubsection{\texorpdfstring{solveQuadratic()}{solveQuadratic()}}
+{\footnotesize\ttfamily bool solve\+Quadratic (\begin{DoxyParamCaption}\item[{const double \&}]{a,  }\item[{const double \&}]{b,  }\item[{const double \&}]{c,  }\item[{\mbox{\hyperlink{cyclop_8hpp_a07afd7094cb489cbd514c76e6f55d34f}{Float}} $\ast$}]{t0,  }\item[{\mbox{\hyperlink{cyclop_8hpp_a07afd7094cb489cbd514c76e6f55d34f}{Float}} $\ast$}]{t1 }\end{DoxyParamCaption})}
+

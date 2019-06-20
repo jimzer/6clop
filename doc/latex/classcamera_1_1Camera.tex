@@ -1,0 +1,76 @@
+\hypertarget{classcamera_1_1Camera}{}\section{camera\+::Camera Class Reference}
+\label{classcamera_1_1Camera}\index{camera::Camera@{camera::Camera}}
+
+
+{\ttfamily \#include $<$camera.\+hpp$>$}
+
+Inheritance diagram for camera\+::Camera\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classcamera_1_1Camera}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classcamera_1_1Camera_acb85cee9b6ea6dfe86143e7446aca6bf}{Camera}} ()
+\item 
+virtual \mbox{\hyperlink{classcamera_1_1Camera_a51ce7c4d6738de1b4ae3362d9c8acd8e}{$\sim$\+Camera}} ()
+\item 
+virtual \mbox{\hyperlink{classRay}{Ray}} \mbox{\hyperlink{classcamera_1_1Camera_ac8029a1623243615089d0847cdf49585}{generate\+Ray}} (const \mbox{\hyperlink{structcamera_1_1CameraSample}{Camera\+Sample}} \&s) const =0
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classtransform_1_1Transform}{transform\+::\+Transform}} \mbox{\hyperlink{classcamera_1_1Camera_a1636f047c45d5960e80796e5f0b2ee89}{raster\+World}}
+\item 
+\mbox{\hyperlink{classfilm_1_1Film}{film\+::\+Film}} $\ast$ \mbox{\hyperlink{classcamera_1_1Camera_a1a21f72f5fae2d27aa020ceac7ce3bac}{film}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classcamera_1_1Camera_acb85cee9b6ea6dfe86143e7446aca6bf}\label{classcamera_1_1Camera_acb85cee9b6ea6dfe86143e7446aca6bf}} 
+\index{camera::Camera@{camera::Camera}!Camera@{Camera}}
+\index{Camera@{Camera}!camera::Camera@{camera::Camera}}
+\subsubsection{\texorpdfstring{Camera()}{Camera()}}
+{\footnotesize\ttfamily camera\+::\+Camera\+::\+Camera (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classcamera_1_1Camera_a51ce7c4d6738de1b4ae3362d9c8acd8e}\label{classcamera_1_1Camera_a51ce7c4d6738de1b4ae3362d9c8acd8e}} 
+\index{camera::Camera@{camera::Camera}!````~Camera@{$\sim$Camera}}
+\index{````~Camera@{$\sim$Camera}!camera::Camera@{camera::Camera}}
+\subsubsection{\texorpdfstring{$\sim$Camera()}{~Camera()}}
+{\footnotesize\ttfamily virtual camera\+::\+Camera\+::$\sim$\+Camera (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classcamera_1_1Camera_ac8029a1623243615089d0847cdf49585}\label{classcamera_1_1Camera_ac8029a1623243615089d0847cdf49585}} 
+\index{camera::Camera@{camera::Camera}!generateRay@{generateRay}}
+\index{generateRay@{generateRay}!camera::Camera@{camera::Camera}}
+\subsubsection{\texorpdfstring{generateRay()}{generateRay()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{classRay}{Ray}} camera\+::\+Camera\+::generate\+Ray (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structcamera_1_1CameraSample}{Camera\+Sample}} \&}]{s }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classcamera_1_1PerspectiveCamera_a15d07767da0fb7258437095b6a41f30b}{camera\+::\+Perspective\+Camera}}.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classcamera_1_1Camera_a1a21f72f5fae2d27aa020ceac7ce3bac}\label{classcamera_1_1Camera_a1a21f72f5fae2d27aa020ceac7ce3bac}} 
+\index{camera::Camera@{camera::Camera}!film@{film}}
+\index{film@{film}!camera::Camera@{camera::Camera}}
+\subsubsection{\texorpdfstring{film}{film}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classfilm_1_1Film}{film\+::\+Film}}$\ast$ camera\+::\+Camera\+::film}
+
+\mbox{\Hypertarget{classcamera_1_1Camera_a1636f047c45d5960e80796e5f0b2ee89}\label{classcamera_1_1Camera_a1636f047c45d5960e80796e5f0b2ee89}} 
+\index{camera::Camera@{camera::Camera}!rasterWorld@{rasterWorld}}
+\index{rasterWorld@{rasterWorld}!camera::Camera@{camera::Camera}}
+\subsubsection{\texorpdfstring{rasterWorld}{rasterWorld}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classtransform_1_1Transform}{transform\+::\+Transform}} camera\+::\+Camera\+::raster\+World}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/core/\mbox{\hyperlink{camera_8hpp}{camera.\+hpp}}\end{DoxyCompactItemize}
