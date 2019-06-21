@@ -7,9 +7,9 @@
 
 class Scene {
  public:
-  hitable::Hitable* aggregate;
+  hitable::Aggregate* aggregate;
 
-  Scene(hitable::Hitable *agg);
+  Scene(hitable::Aggregate *agg);
   bool hit(const Ray &r, hitable::HitRecord *rec) const;
   bool hitCheck(const Ray &r) const;
 };

@@ -3,6 +3,7 @@
 #include "core/ray.hpp"
 #include "core/transform.hpp"
 #include "gtest/gtest.h"
+#include "hitables/brute_aggregate.hpp"
 #include "hitables/sphere.hpp"
 
 using namespace hitable;
@@ -15,7 +16,9 @@ TEST(scene, constructor) {
   Vector3f center(0, 0, 0);
   Vector3f p1(1, 1, 1);
   Vector3f w1(10, 0, 0);
-  Scene scene(&s);
+  std::vector<Hitable*> hitables = {&s};
+  BruteAggregate agg(hitables);
+  Scene scene(&agg);
 
   ASSERT_NO_THROW();
 }
@@ -27,7 +30,9 @@ TEST(scene, intersectNoTransform) {
   Vector3f d(-1, -1, -1);
   Ray r(o, d);
   HitRecord hr;
-  Scene scene(&s);
+  std::vector<Hitable*> hitables = {&s};
+  BruteAggregate agg(hitables);
+  Scene scene(&agg);
   bool b = scene.hit(r, &hr);
 
   Vector3f r1 = Vector3f(1, 1, 1).normalized().eval() * 2;
@@ -44,7 +49,9 @@ TEST(scene, intersectTransform) {
   Vector3f o(-10, -10, -10);
   Vector3f d(1, 1, 1);
   Ray r(o, d);
-  Scene scene(&s);
+  std::vector<Hitable*> hitables = {&s};
+  BruteAggregate agg(hitables);
+  Scene scene(&agg);
 
   HitRecord hr;
   bool b = scene.hit(r, &hr);
@@ -64,7 +71,9 @@ TEST(scene, intersectNoIntersection) {
   Vector3f o(0, 0, 0);
   Vector3f d(1, 0, 0);
   Ray r(o, d);
-  Scene scene(&s);
+  std::vector<Hitable*> hitables = {&s};
+  BruteAggregate agg(hitables);
+  Scene scene(&agg);
 
   HitRecord hr;
   bool b = scene.hit(r, &hr);
@@ -78,7 +87,9 @@ TEST(scene, hitPIntersection) {
   Vector3f o(0, 0, 0);
   Vector3f d(1, 1, 1);
   Ray r(o, d);
-  Scene scene(&s);
+  std::vector<Hitable*> hitables = {&s};
+  BruteAggregate agg(hitables);
+  Scene scene(&agg);
 
   bool b = scene.hitCheck(r);
 
@@ -91,7 +102,9 @@ TEST(scene, hitPNoIntersection) {
   Vector3f o(0, 0, 0);
   Vector3f d(1, 0, 0);
   Ray r(o, d);
-  Scene scene(&s);
+  std::vector<Hitable*> hitables = {&s};
+  BruteAggregate agg(hitables);
+  Scene scene(&agg);
 
   bool b = scene.hitCheck(r);
 

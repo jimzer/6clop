@@ -99,3 +99,12 @@ TEST(sphere, hitPNoIntersection) {
 
   ASSERT_EQ(b, false);
 }
+
+TEST(sphere, area) {
+  Transform t;
+  Sphere s1(t, 2);
+  Sphere s2(t, 6);
+
+  ASSERT_FLOAT_EQ(s1.area(), 4 * M_PI * 2 * 2);
+  ASSERT_FLOAT_EQ(s2.area(), 4 * M_PI * 6 * 6);
+}

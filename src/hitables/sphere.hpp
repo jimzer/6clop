@@ -17,6 +17,7 @@ class Sphere : public Hitable {
 
   bool hit(const Ray &r, HitRecord *rec) const;
   bool hitCheck(const Ray &r) const;
+  Float area() const;
 };
 
 }  // namespace hitable

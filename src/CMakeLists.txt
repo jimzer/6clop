@@ -35,6 +35,8 @@ add_library(
     hitables
     hitables/sphere.hpp
     hitables/sphere.cpp
+    hitables/brute_aggregate.hpp
+    hitables/brute_aggregate.cpp
 )
 
 add_library(

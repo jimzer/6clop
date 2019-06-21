@@ -33,6 +33,7 @@ bool Sphere::hit(const Ray &r, HitRecord *rec) const {
 
   rec->p = objWorld(pHit, POINT);
   rec->n = objWorld(nHit, NORMAL);
+  rec->t = tHit;
 
   return true;
 }
@@ -61,6 +62,10 @@ bool Sphere::hitCheck(const Ray &r) const {
   }
 
   return true;
+}
+
+Float Sphere::area() const {
+  return 4 * M_PI * radius * radius;
 }
 
 }  // namespace hitable

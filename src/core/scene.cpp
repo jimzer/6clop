@@ -1,6 +1,6 @@
 #include "scene.hpp"
 
-Scene::Scene(hitable::Hitable *agg) : aggregate(agg){};
+Scene::Scene(hitable::Aggregate *agg) : aggregate(agg){};
 
 bool Scene::hit(const Ray &r, hitable::HitRecord *rec) const {
   return aggregate->hit(r, rec);
