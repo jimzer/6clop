@@ -22,18 +22,22 @@ using namespace hitable;
 using namespace transform;
 
 TEST(HitIntegrator, constructor) {
+  Vector3f bc(0,0,0);
+  Vector3f hc(0,1,0);
   BoxFilter filter(1);
   Film film("test", Vector2i(1000, 500), &filter);
   Vector3f from(10, 10, 10);
   Vector3f to(0, 0, 0);
   PerspectiveCamera cam(&film, from, to, 90);
   NaiveSampler ns(7);
-  HitIntegrator hi(&ns, &cam, 1);
+  HitIntegrator hi(&ns, &cam, 1, bc, hc);
 
   ASSERT_NO_THROW();
 }
 
 TEST(HitIntegrator, render) {
+  Vector3f bc(0,0,0);
+  Vector3f hc(0,1,0);
   BoxFilter filter(1);
   Film film("hit-integrator-render-test.ppm", Vector2i(200, 150), &filter);
   Vector3f from(10, 10, 10);
@@ -41,7 +45,7 @@ TEST(HitIntegrator, render) {
   PerspectiveCamera cam(&film, from, to, 25);
   ConstSampler cs(7, 0);
   NaiveSampler ns(7);
-  HitIntegrator hi(&ns, &cam, 4);
+  HitIntegrator hi(&ns, &cam, 4, bc, hc);
 
   Sphere s(Transform(), 2);
   Scene scene(&s);

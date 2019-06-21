@@ -7,17 +7,17 @@
 namespace integrator {
 
 HitIntegrator::HitIntegrator(sampler::Sampler *s, camera::Camera *c,
-                             const int &ns)
-    : SamplerIntegrator(s, c, ns){};
+                             const int &ns, const Vector3f &bc, const Vector3f &hc)
+    : SamplerIntegrator(s, c, ns), backgroudColor(bc), hitColor(hc) {};
 
 Vector3f HitIntegrator::li(const Ray &ray, const Scene &scene,
                            const int &depth) const {
   hitable::HitRecord hr;
   if (scene.hit(ray, &hr)) {
     Float c = hr.n.dot(-ray.d);
-    return Vector3f(1, 1, 1) * c;
+    return hitColor * c;
   } else {
-    return Vector3f(1, 0, 0);
+    return backgroudColor;
   }
 }
 

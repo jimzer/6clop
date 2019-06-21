@@ -8,7 +8,10 @@ namespace integrator {
 
 class HitIntegrator : public SamplerIntegrator {
  public:
-  HitIntegrator(sampler::Sampler *s, camera::Camera *c, const int &ns);
+  Vector3f backgroudColor;
+  Vector3f hitColor;
+  HitIntegrator(sampler::Sampler *s, camera::Camera *c, const int &ns,
+                const Vector3f &bc, const Vector3f &hc);
 
   Vector3f li(const Ray &ray, const Scene &scene, const int &depth) const;
 };
