@@ -14,7 +14,6 @@ struct HitRecord {
 
 class Hitable {
  public:
-  transform::Transform objWorld;
 
   Hitable(){};
   virtual ~Hitable(){};

@@ -13,12 +13,13 @@ TEST(transform, scaleTransform) {
   Vector3f v(1, 0, 2);
   Vector3f v1(1, 2, 3);
   Transform t1 = transform::scaleTransform(v1);
+  Transform invt1 = t1.inverse();
 
-  Vector3f r1 = t1.apply(v, POINT);
-  Vector3f ri1 = t1.invApply(r1, POINT);
+  Vector3f r1 = t1(v, POINT);
+  Vector3f ri1 = invt1(r1, POINT);
 
-  Vector3f r2 = t1.apply(v, VECTOR);
-  Vector3f ri2 = t1.invApply(r2, VECTOR);
+  Vector3f r2 = t1(v, VECTOR);
+  Vector3f ri2 = invt1(r2, VECTOR);
 
   ASSERT_EQ(t1.mat(0, 0), 1);
   ASSERT_EQ(t1.mat(1, 1), 2);
@@ -40,12 +41,13 @@ TEST(transform, translateTransform) {
   Vector3f v(1, 0, 2);
   Vector3f v1(1, 2, 3);
   Transform t1 = transform::translateTransform(v1);
+  Transform invt1 = t1.inverse();
 
-  Vector3f r1 = t1.apply(v, POINT);
-  Vector3f ri1 = t1.invApply(r1, POINT);
+  Vector3f r1 = t1(v, POINT);
+  Vector3f ri1 = invt1(r1, POINT);
 
-  Vector3f r2 = t1.apply(v, VECTOR);
-  Vector3f ri2 = t1.invApply(r2, VECTOR);
+  Vector3f r2 = t1(v, VECTOR);
+  Vector3f ri2 = invt1(r2, VECTOR);
 
   ASSERT_EQ(t1.mat(0, 0), 1);
   ASSERT_EQ(t1.mat(1, 1), 1);
@@ -74,13 +76,15 @@ TEST(transform, composeTransforms) {
   Transform ts2 = transform::scaleTransform(vs2);
 
   Transform t1 = transform::composeTransforms(ts1, tt);
+  Transform invt1 = t1.inverse();
   Transform t2 = transform::composeTransforms(ts1, tt, ts2);
+  Transform invt2 = t2.inverse();
 
-  Vector3f r1 = t1.apply(v, POINT);
-  Vector3f rr1 = t1.invApply(r1, POINT);
+  Vector3f r1 = t1(v, POINT);
+  Vector3f rr1 = invt1(r1, POINT);
 
-  Vector3f r2 = t2.apply(v, POINT);
-  Vector3f rr2 = t2.invApply(r2, POINT);
+  Vector3f r2 = t2(v, POINT);
+  Vector3f rr2 = invt2(r2, POINT);
 
   ASSERT_EQ(r1, Vector3f(6, 10, 18));
   ASSERT_EQ(rr1, v);
@@ -94,9 +98,9 @@ TEST(transform, rasterToNdc) {
   Vector3f v2(500, 250, -1);
   Vector3f v3(1000, 500, -1);
   Transform t = rasterToNdc(1000, 500);
-  Vector3f r1 = t.apply(v1, POINT);
-  Vector3f r2 = t.apply(v2, POINT);
-  Vector3f r3 = t.apply(v3, POINT);
+  Vector3f r1 = t(v1, POINT);
+  Vector3f r2 = t(v2, POINT);
+  Vector3f r3 = t(v3, POINT);
 
   ASSERT_EQ(r1, Vector3f(0, 0, -1));
   ASSERT_EQ(r2, Vector3f(0.5, 0.5, -1));
@@ -108,9 +112,9 @@ TEST(transform, ndcToCam) {
   Vector3f v2(1, 1, -1);
   Vector3f v3(0.5, 0.5, -1);
   Transform t = ndcToCam(2, 90);
-  Vector3f r1 = t.apply(v1, POINT);
-  Vector3f r2 = t.apply(v2, POINT);
-  Vector3f r3 = t.apply(v3, POINT);
+  Vector3f r1 = t(v1, POINT);
+  Vector3f r2 = t(v2, POINT);
+  Vector3f r3 = t(v3, POINT);
 
   ASSERT_EQ(r1, Vector3f(-2, 1, -1));
   ASSERT_EQ(r2, Vector3f(2, -1, -1));
@@ -122,9 +126,9 @@ TEST(transform, rasterToCam) {
   Vector3f v2(1000, 500, -1);
   Vector3f v3(500, 250, -1);
   Transform t = rasterToCam(1000, 500, 90);
-  Vector3f r1 = t.apply(v1, POINT);
-  Vector3f r2 = t.apply(v2, POINT);
-  Vector3f r3 = t.apply(v3, POINT);
+  Vector3f r1 = t(v1, POINT);
+  Vector3f r2 = t(v2, POINT);
+  Vector3f r3 = t(v3, POINT);
 
   ASSERT_EQ(r1, Vector3f(-2, 1, -1));
   ASSERT_EQ(r2, Vector3f(2, -1, -1));
@@ -139,7 +143,7 @@ TEST(transform, worldToCam) {
   Vector3f v(0, 0, -1);
 
   Vector3f delta = Vector3f(-1, -1, -1).normalized();
-  Vector3f r = t.apply(v, POINT);
+  Vector3f r = t(v, POINT);
 
   ASSERT_EQ(r, from + delta);
 }
@@ -150,7 +154,7 @@ TEST(transform, rasterToWorld) {
   Transform t = rasterToWorld(1000, 500, 90, from, to);
 
   Vector3f v(500, 250, -1);
-  Vector3f r = t.apply(v, POINT);
+  Vector3f r = t(v, POINT);
 
   Vector3f delta = Vector3f(-1, -1, -1).normalized();
 

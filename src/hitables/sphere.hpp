@@ -10,6 +10,8 @@ namespace hitable {
 class Sphere : public Hitable {
  public:
   Float radius;
+  transform::Transform objWorld;
+  transform::Transform worldObj;
 
   Sphere(const transform::Transform &t, const Float &r);
 

@@ -10,35 +10,27 @@ Transform::Transform() {
 }
 
 Transform::Transform(const Matrix4f &m) {
+  ASSERT(!mat.array().isNaN().any(), "NaN in transformation matrix");
   mat = m;
-  invMat = mat.inverse();
-  ASSERT(!invMat.array().isNaN().any(), "NaN in transformation matrix");
 }
 
-Vector3f Transform::apply(const Vector3f &v, Geomtype g) const {
+Vector3f Transform::operator()(const Vector3f &v, const Geomtype &g) const {
   Vector4f resH = geometry::toHomog(v, g);
   resH = mat * resH;
   return geometry::toRegular(resH);
-}
+}  // namespace transform
 
-Vector3f Transform::invApply(const Vector3f &v, Geomtype g) const {
-  Vector4f resH = geometry::toHomog(v, g);
-  resH = invMat * resH;
-  return geometry::toRegular(resH);
-};
-
-Ray Transform::apply(const Ray &r) const {
-  Vector3f nO = apply(r.o, POINT);
-  Vector3f nD = apply(r.d, VECTOR);
-  return Ray(nO, nD, r.tMax, r.time, r.medium);
-}
-Ray Transform::invApply(const Ray &r) const {
-  Vector3f nO = invApply(r.o, POINT);
-  Vector3f nD = invApply(r.d, VECTOR);
+Ray Transform::operator()(const Ray &r) const {
+  Vector3f nO = (*this)(r.o, POINT);
+  Vector3f nD = (*this)(r.d, VECTOR);
   return Ray(nO, nD, r.tMax, r.time, r.medium);
 }
 
-void Transform::inverse() { std::swap(mat, invMat); }
+Transform Transform::inverse() const {
+  Matrix4f invMat = mat.inverse();
+  ASSERT(!invMat.array().isNaN().any(), "NaN in inverted transformation matrix");
+  return Transform(invMat);
+}
 
 Transform scaleTransform(const Vector3f &s) {
   Matrix4f m = Matrix4f::Identity();
@@ -96,10 +88,10 @@ Transform camToWorld(const Vector3f &from, const Vector3f &to) {
   Vector3f up = forward.cross(right);
 
   Transform coordinateChange = basisChange(right, up, forward);
-  coordinateChange.inverse();
+  Transform invCoordinateChange =  coordinateChange.inverse();
   Transform t = translateTransform(from);
 
-  return composeTransforms(t, coordinateChange);
+  return composeTransforms(t, invCoordinateChange);
 }
 
 Transform rasterToWorld(const Float &resX, const Float &resY, const Float &fov,

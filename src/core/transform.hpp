@@ -14,13 +14,10 @@ class Transform {
 
   Transform();
   Transform(const Matrix4f &m);
-  void inverse();
+  Transform inverse() const;
 
-  Vector3f apply(const Vector3f &v, Geomtype g) const;
-  Vector3f invApply(const Vector3f &v, Geomtype g) const;
-
-  Ray apply(const Ray &r) const;
-  Ray invApply(const Ray &r) const;
+  Vector3f operator()(const Vector3f &v, const Geomtype &g) const;
+  Ray operator()(const Ray &r) const;
 };
 
 Transform scaleTransform(const Vector3f &s);

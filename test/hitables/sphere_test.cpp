@@ -15,9 +15,9 @@ TEST(sphere, constructor) {
   Vector3f p1(1, 1, 1);
   Vector3f w1(10, 0, 0);
 
-  Vector3f r1 = s.objWorld.apply(center, POINT);
-  Vector3f r2 = s.objWorld.apply(p1, POINT);
-  Vector3f r3 = s.objWorld.invApply(w1, POINT);
+  Vector3f r1 = s.objWorld(center, POINT);
+  Vector3f r2 = s.objWorld(p1, POINT);
+  Vector3f r3 = s.worldObj(w1, POINT);
 
   ASSERT_EQ(r1, Vector3f(10, 10, 10));
   ASSERT_EQ(r2, Vector3f(11, 11, 11));

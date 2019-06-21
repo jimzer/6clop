@@ -14,9 +14,9 @@ PerspectiveCamera::PerspectiveCamera(film::Film *fi, const Vector3f &f,
 Ray PerspectiveCamera::generateRay(const CameraSample &cs) const {
   Vector3f o(0, 0, 0);
   Vector3f d = Vector3f(cs.filmSample.x(), cs.filmSample.y(), -1);
-  d = rasterCam.apply(d, POINT);
+  d = rasterCam(d, POINT);
   Ray r = Ray(o, d);
-  return camWorld.apply(r);
+  return camWorld(r);
 }
 
 }  // namespace camera

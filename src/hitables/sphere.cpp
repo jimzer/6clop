@@ -2,13 +2,11 @@
 
 namespace hitable {
 
-Sphere::Sphere(const transform::Transform &t, const Float &r) {
-  objWorld = t;
-  radius = r;
-}
+Sphere::Sphere(const transform::Transform &t, const Float &r)
+    : objWorld(t), worldObj(t.inverse()), radius(r) {}
 
 bool Sphere::hit(const Ray &r, HitRecord *rec) const {
-  Ray ro = objWorld.invApply(r);
+  Ray ro = worldObj(r);
   Float a = ro.d.dot(ro.d);
   Float b = 2 * ro.d.dot(ro.o);
   Float c = ro.o.dot(ro.o) - radius * radius;
@@ -33,14 +31,14 @@ bool Sphere::hit(const Ray &r, HitRecord *rec) const {
   Vector3f pHit = ro(tHit);
   Vector3f nHit = pHit.normalized();
 
-  rec->p = objWorld.apply(pHit, POINT);
-  rec->n = objWorld.apply(nHit, NORMAL);
+  rec->p = objWorld(pHit, POINT);
+  rec->n = objWorld(nHit, NORMAL);
 
   return true;
 }
 
 bool Sphere::hitCheck(const Ray &r) const {
-  Ray ro = objWorld.invApply(r);
+  Ray ro = worldObj(r);
   Float a = ro.d.dot(ro.d);
   Float b = 2 * ro.d.dot(ro.o);
   Float c = ro.o.dot(ro.o) - radius * radius;
