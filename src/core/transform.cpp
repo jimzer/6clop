@@ -55,6 +55,14 @@ Transform basisChange(const Vector3f &x, const Vector3f &y, const Vector3f &z) {
   return Transform(m);
 }
 
+
+Transform coordinateSystem(const Vector3f &n) {
+  Vector3f z = n.normalized();
+  Vector3f x = Vector3f(-z.y(), z.x(), 0).normalized();
+  Vector3f y = z.cross(x);
+  return basisChange(x, y, z);
+}
+
 Transform rasterToNdc(const Float &resX, const Float &resY) {
   Vector3f s(1.0 / resX, 1.0 / resY, 1);
   return scaleTransform(s);

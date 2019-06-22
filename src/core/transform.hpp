@@ -33,6 +33,7 @@ Transform composeTransforms(Args &&... args) {
 }
 
 Transform basisChange(const Vector3f &x, const Vector3f &y, const Vector3f &z);
+Transform coordinateSystem(const Vector3f &n);
 Transform rasterToNdc(const Float &resX, const Float &resY);
 Transform ndcToCam(const Float &aspect, const Float &fov);
 Transform rasterToCam(const Float &resX, const Float &resY, const Float &fov);

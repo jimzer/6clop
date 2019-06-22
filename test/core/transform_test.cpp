@@ -4,15 +4,15 @@
 
 using namespace transform;
 
-TEST(transform, constructor) {
+TEST(Transform, constructor) {
   Matrix4f a = Matrix4f::Identity();
   Transform t(a);
 }
 
-TEST(transform, scaleTransform) {
+TEST(Transform, scaleTransform) {
   Vector3f v(1, 0, 2);
   Vector3f v1(1, 2, 3);
-  Transform t1 = transform::scaleTransform(v1);
+  Transform t1 = scaleTransform(v1);
   Transform invt1 = t1.inverse();
 
   Vector3f r1 = t1(v, POINT);
@@ -37,10 +37,10 @@ TEST(transform, scaleTransform) {
   ASSERT_EQ(ri2, v);
 }
 
-TEST(transform, translateTransform) {
+TEST(Transform, translateTransform) {
   Vector3f v(1, 0, 2);
   Vector3f v1(1, 2, 3);
-  Transform t1 = transform::translateTransform(v1);
+  Transform t1 = translateTransform(v1);
   Transform invt1 = t1.inverse();
 
   Vector3f r1 = t1(v, POINT);
@@ -66,18 +66,18 @@ TEST(transform, translateTransform) {
   ASSERT_EQ(ri2, v);
 }
 
-TEST(transform, composeTransforms) {
+TEST(Transform, composeTransforms) {
   Vector3f v(1, 1, 1);
   Vector3f vs1(2, 2, 2);
   Vector3f vt(2, 4, 8);
   Vector3f vs2(1, 1, 4);
-  Transform ts1 = transform::scaleTransform(vs1);
-  Transform tt = transform::translateTransform(vt);
-  Transform ts2 = transform::scaleTransform(vs2);
+  Transform ts1 = scaleTransform(vs1);
+  Transform tt = translateTransform(vt);
+  Transform ts2 = scaleTransform(vs2);
 
-  Transform t1 = transform::composeTransforms(ts1, tt);
+  Transform t1 = composeTransforms(ts1, tt);
   Transform invt1 = t1.inverse();
-  Transform t2 = transform::composeTransforms(ts1, tt, ts2);
+  Transform t2 = composeTransforms(ts1, tt, ts2);
   Transform invt2 = t2.inverse();
 
   Vector3f r1 = t1(v, POINT);
@@ -93,7 +93,7 @@ TEST(transform, composeTransforms) {
   ASSERT_EQ(rr2, v);
 }
 
-TEST(transform, rasterToNdc) {
+TEST(Transform, rasterToNdc) {
   Vector3f v1(0, 0, -1);
   Vector3f v2(500, 250, -1);
   Vector3f v3(1000, 500, -1);
@@ -107,7 +107,7 @@ TEST(transform, rasterToNdc) {
   ASSERT_EQ(r3, Vector3f(1, 1, -1));
 }
 
-TEST(transform, ndcToCam) {
+TEST(Transform, ndcToCam) {
   Vector3f v1(0, 0, -1);
   Vector3f v2(1, 1, -1);
   Vector3f v3(0.5, 0.5, -1);
@@ -121,7 +121,7 @@ TEST(transform, ndcToCam) {
   ASSERT_EQ(r3, Vector3f(0, 0, -1));
 }
 
-TEST(transform, rasterToCam) {
+TEST(Transform, rasterToCam) {
   Vector3f v1(0, 0, -1);
   Vector3f v2(1000, 500, -1);
   Vector3f v3(500, 250, -1);
@@ -135,7 +135,7 @@ TEST(transform, rasterToCam) {
   ASSERT_EQ(r3, Vector3f(0, 0, -1));
 }
 
-TEST(transform, worldToCam) {
+TEST(Transform, worldToCam) {
   Vector3f from(10, 10, 10);
   Vector3f to(0, 0, 0);
   Transform t = camToWorld(from ,to);
@@ -148,7 +148,7 @@ TEST(transform, worldToCam) {
   ASSERT_EQ(r, from + delta);
 }
 
-TEST(transform, rasterToWorld) {
+TEST(Transform, rasterToWorld) {
   Vector3f from(10, 10, 10);
   Vector3f to(0, 0, 0);
   Transform t = rasterToWorld(1000, 500, 90, from, to);
@@ -159,4 +159,20 @@ TEST(transform, rasterToWorld) {
   Vector3f delta = Vector3f(-1, -1, -1).normalized();
 
   ASSERT_EQ(r, from + delta);
+}
+
+TEST(Transform, coordinateSytem) {
+  Vector3f n(20, 10, 10);
+  Transform cs = coordinateSystem(n);
+  Vector3f x = cs.mat.col(0).head(3);
+  Vector3f y = cs.mat.col(1).head(3);
+  Vector3f z = cs.mat.col(2).head(3);
+
+  ASSERT_FLOAT_EQ(x.dot(y), 0);
+  ASSERT_FLOAT_EQ(x.dot(y), 0);
+  ASSERT_FLOAT_EQ(y.dot(z), 0);
+  ASSERT_FLOAT_EQ(x.norm(), 1);
+  ASSERT_FLOAT_EQ(y.norm(), 1);
+  ASSERT_FLOAT_EQ(z.norm(), 1);
+
 }
