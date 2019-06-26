@@ -36,14 +36,14 @@ TEST(AOIntegrator, constructor) {
 
 TEST(AOIntegrator, renderMultiSpheres) {
   BoxFilter filter(1);
-  Film film("ao-integrator-render-multi-shperes-test.ppm", Vector2i(200, 100),
+  Film film("ao-integrator-render-multi-shperes-test.ppm", Vector2i(100, 50),
             &filter);
   Vector3f from(0, 2, 4);
   Vector3f to(0, 1, -1);
   PerspectiveCamera cam(&film, from, to, 90);
   ConstSampler cs(7, 0);
   NaiveSampler ns(7);
-  AOIntegrator hi(&ns, &cam, 2, 2);
+  AOIntegrator hi(&ns, &cam, 1, 1);
 
   Sphere s1(translateTransform(Vector3f(0, 4, -6)), 4);
   Sphere s2(translateTransform(Vector3f(0, -100, -4)), 100);

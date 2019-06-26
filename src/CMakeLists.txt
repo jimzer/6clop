@@ -62,6 +62,7 @@ add_library(
     filters/box_filter.cpp
 )
 
+
 target_include_directories(core PUBLIC "${CMAKE_CURRENT_SOURCE_DIRECTORY/src}")
 target_include_directories(cameras PUBLIC "${CMAKE_CURRENT_SOURCE_DIRECTORY/src}")
 target_include_directories(hitables PUBLIC "${CMAKE_CURRENT_SOURCE_DIRECTORY/src}")

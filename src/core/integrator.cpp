@@ -1,5 +1,6 @@
 #include "integrator.hpp"
 #include "camera.hpp"
+#include "ext/progress_bar.hpp"
 #include "film.hpp"
 #include "geometry.hpp"
 #include "ray.hpp"
@@ -14,6 +15,8 @@ SamplerIntegrator::SamplerIntegrator(sampler::Sampler *s, camera::Camera *c,
 void SamplerIntegrator::render(const Scene &scene) {
   geometry::Bound2i b = camera->film->getPixelsBound();
 
+  ProgressBar progressBar(camera->film->resolution.prod(), 70);
+
   for (const Vector2i pixelPos : b) {
     for (int i = 0; i < samplesPerPixel; i++) {
       Vector2f shift = sampler->get2D();
@@ -26,7 +29,10 @@ void SamplerIntegrator::render(const Scene &scene) {
       Vector3f radiance = li(ray, scene, 10);
       camera->film->addSample(filmPos, radiance, 1.0);
     }
+    ++progressBar;
+    progressBar.display();
   }
+  progressBar.done();
   camera->film->writeImage();
 }
 }  // namespace integrator
