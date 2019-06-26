@@ -12,6 +12,7 @@ add_executable(
     hitables/sphere_test.cpp
     hitables/brute_aggregate_test.cpp
     integrators/hit_integrator_test.cpp
+    integrators/ao_integrator_test.cpp
     samplers/naive_sampler_test.cpp
     filters/box_filter_test.cpp
     )

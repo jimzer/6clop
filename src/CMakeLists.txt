@@ -6,11 +6,12 @@ add_library(
     core/cyclop.cpp
     core/camera.hpp
     core/hitable.hpp
-    core/sampler.hpp
     core/filter.hpp
     core/geometry.hpp
     core/integrator.hpp
     core/integrator.cpp
+    core/sampler.hpp
+    core/sampler.cpp
     core/geometry.cpp
     core/ray.hpp
     core/ray.cpp
@@ -43,6 +44,8 @@ add_library(
     integrators
     integrators/hit_integrator.hpp
     integrators/hit_integrator.cpp
+    integrators/ao_integrator.hpp
+    integrators/ao_integrator.cpp
 )
 
 add_library(

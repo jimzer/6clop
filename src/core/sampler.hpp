@@ -16,6 +16,8 @@ class Sampler {
   virtual Vector2f get2D() const = 0;
 };
 
+Vector3f uniformSamplerHemisphere(const Vector2f &u);
+
 }  // namespace sampler
 
 #endif
