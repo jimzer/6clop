@@ -35,6 +35,8 @@ target_link_libraries(main PRIVATE hitables core)
 target_link_libraries(main PRIVATE samplers core)
 target_link_libraries(main PRIVATE filters core)
 target_link_libraries(main PRIVATE integrators core)
+target_link_libraries(main PRIVATE lights core)
+target_link_libraries(main PRIVATE materials core)
 
 
 include(cmake/googletest.cmake)

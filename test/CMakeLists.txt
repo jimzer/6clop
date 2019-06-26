@@ -25,6 +25,8 @@ target_link_libraries(unit_tests hitables core)
 target_link_libraries(unit_tests samplers core)
 target_link_libraries(unit_tests filters core)
 target_link_libraries(unit_tests integrators core)
+target_link_libraries(unit_tests lights core)
+target_link_libraries(unit_tests materials core)
 
 add_test(
   NAME
